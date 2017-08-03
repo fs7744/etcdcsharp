@@ -254,5 +254,46 @@ namespace ETCD.V3
         }
 
         #endregion DeleteRange
+
+        #region Compact
+
+        public static CompactionRequest CreateCompactionRequest(this Client client, long revision, bool physical = false)
+        {
+            return new CompactionRequest()
+            {
+                Revision = revision,
+                Physical = physical
+            };
+        }
+
+        public static CompactionResponse Compact(this Client client, long revision, bool physical = false,
+          bool prevKv = false)
+        {
+            var request = client.CreateCompactionRequest(revision, physical);
+            return client.KV.Compact(request, client.CallToken);
+        }
+
+        public static AsyncUnaryCall<CompactionResponse> CompactAsync(this Client client, long revision, bool physical = false,
+          bool prevKv = false)
+        {
+            var request = client.CreateCompactionRequest(revision, physical);
+            return client.KV.CompactAsync(request, client.CallToken);
+        }
+
+        #endregion Compact
+
+        #region Txn
+
+        public static TxnResponse Txn(this Client client, TxnRequest request)
+        {
+            return client.KV.Txn(request, client.CallToken);
+        }
+
+        public static AsyncUnaryCall<TxnResponse> TxnAsync(this Client client, TxnRequest request)
+        {
+            return client.KV.TxnAsync(request, client.CallToken);
+        }
+
+        #endregion Txn
     }
 }

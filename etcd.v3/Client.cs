@@ -1,6 +1,5 @@
 ﻿using Etcdserverpb;
 using Grpc.Core;
-using System;
 using System.Threading.Tasks;
 using static Etcdserverpb.Auth;
 using static Etcdserverpb.Cluster;
@@ -25,11 +24,11 @@ namespace ETCD.V3
         public Client(string target, string user = null, string password = null)
         {
             _Channel = new Channel(target, ChannelCredentials.Insecure);
-            Authebtucate(target, user, password);
+            Authebtucate(user, password);
             InitClient();
         }
 
-        private void Authebtucate(string target, string user, string password)
+        public void Authebtucate(string user, string password)
         {
             if (!string.IsNullOrWhiteSpace(user))
             {
