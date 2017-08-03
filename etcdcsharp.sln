@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26724.1
+VisualStudioVersion = 15.0.26730.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "etcd.v3", "etcd.v3\etcd.v3.csproj", "{1E98B05F-2C4C-459B-B44C-BB3228C8F9AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETCD.V3.Test", "ETCD.V3.Test\ETCD.V3.Test.csproj", "{94CA1BF7-1777-4FE1-9851-32ACEBF98AA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETCD.V3.Test", "ETCD.V3.Test\ETCD.V3.Test.csproj", "{94CA1BF7-1777-4FE1-9851-32ACEBF98AA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

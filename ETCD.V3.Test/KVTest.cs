@@ -24,11 +24,7 @@ namespace ETCD.V3.Test
         [Fact]
         public void Put()
         {
-            var res = _Fixture.Client.KV.Put(new PutRequest()
-            {
-                Key = SAMPLE_KEY,
-                Value = SAMPLE_VALUE
-            });
+            var res = _Fixture.Client.Put(SAMPLE_KEY, SAMPLE_VALUE);
             Assert.NotNull(res.Header);
             Assert.True(res.PrevKv == null);
 
@@ -37,18 +33,10 @@ namespace ETCD.V3.Test
 
         private void Delete(ByteString key, long? number = null)
         {
-            var res = _Fixture.Client.KV.Range(new RangeRequest()
-            {
-                Key = key,
-                RangeEnd = Constants.NullKey
-            });
+            var res = _Fixture.Client.GetAll(key);
             if (number.HasValue)
                 Assert.Equal(number.Value, res.Count);
-            var delRes = _Fixture.Client.KV.DeleteRange(new DeleteRangeRequest()
-            {
-                Key = key,
-                RangeEnd = Constants.NullKey
-            });
+            var delRes = _Fixture.Client.DeleteAll(key);
             Assert.Equal(res.Count, delRes.Deleted);
         }
 
@@ -57,27 +45,15 @@ namespace ETCD.V3.Test
         {
             var ex = Assert.Throws<Exception>(() =>
             {
-                var res = _Fixture.Client.KV.Put(new PutRequest()
-                {
-                    Key = SAMPLE_KEY,
-                    Value = SAMPLE_VALUE,
-                    Lease = 9999
-                });
+                var res = _Fixture.Client.Put(SAMPLE_KEY, SAMPLE_VALUE, 9999L);
             });
         }
 
         [Fact]
         public void Get()
         {
-            _Fixture.Client.KV.Put(new PutRequest()
-            {
-                Key = SAMPLE_KEY_2,
-                Value = SAMPLE_VALUE_2
-            });
-            var res = _Fixture.Client.KV.Range(new RangeRequest()
-            {
-                Key = SAMPLE_KEY_2
-            });
+            _Fixture.Client.Put(SAMPLE_KEY_2, SAMPLE_VALUE_2);
+            var res = _Fixture.Client.Range(SAMPLE_KEY_2);
             Assert.Equal(1, res.Count);
             Assert.Equal(1, res.Kvs.Count);
             Assert.Equal(SAMPLE_VALUE_2.ToStringUtf8(), res.Kvs[0].Value.ToStringUtf8());
@@ -87,21 +63,9 @@ namespace ETCD.V3.Test
         [Fact]
         public void GetWithRev()
         {
-            var putRes = _Fixture.Client.KV.Put(new PutRequest()
-            {
-                Key = SAMPLE_KEY_3,
-                Value = SAMPLE_VALUE
-            });
-            _Fixture.Client.KV.Put(new PutRequest()
-            {
-                Key = SAMPLE_KEY_3,
-                Value = SAMPLE_VALUE_2
-            });
-            var res = _Fixture.Client.KV.Range(new RangeRequest()
-            {
-                Key = SAMPLE_KEY_3,
-                Revision = putRes.Header.Revision
-            });
+            var putRes = _Fixture.Client.Put(SAMPLE_KEY_3, SAMPLE_VALUE);
+            _Fixture.Client.Put(SAMPLE_KEY_3, SAMPLE_VALUE_2);
+            var res = _Fixture.Client.Range(SAMPLE_KEY_3, revision: putRes.Header.Revision);
             Assert.Equal(1, res.Count);
             Assert.Equal(1, res.Kvs.Count);
             Assert.Equal(SAMPLE_VALUE.ToStringUtf8(), res.Kvs[0].Value.ToStringUtf8());
@@ -114,11 +78,7 @@ namespace ETCD.V3.Test
             {
                 var key = ByteString.CopyFromUtf8(prefix + i);
                 var value = ByteString.CopyFromUtf8("" + i);
-                _Fixture.Client.KV.Put(new PutRequest()
-                {
-                    Key = key,
-                    Value = value
-                });
+                _Fixture.Client.Put(key, value);
             }
         }
 
@@ -128,13 +88,8 @@ namespace ETCD.V3.Test
             string prefix = TestUtil.RandomString();
             int numPrefix = 3;
             PutKeysWithPrefix(prefix, numPrefix);
-            var res = _Fixture.Client.KV.Range(new RangeRequest()
-            {
-                Key = ByteString.CopyFromUtf8(prefix),
-                RangeEnd = Constants.NullKey,
-                SortTarget = SortTarget.Key,
-                SortOrder = SortOrder.Descend
-            });
+            var res = _Fixture.Client.GetAll(prefix, sortTarget: SortTarget.Key,
+                sortOrder: SortOrder.Descend);
             Assert.Equal(numPrefix, res.Count);
             Assert.Equal(numPrefix, res.Kvs.Count);
             for (int i = 0; i < numPrefix; i++)
@@ -161,11 +116,7 @@ namespace ETCD.V3.Test
             var cmpValue = ByteString.CopyFromUtf8("abc");
             var putValue = ByteString.CopyFromUtf8("XYZ");
             var putValueNew = ByteString.CopyFromUtf8("ABC");
-            var putRes = _Fixture.Client.KV.Put(new PutRequest()
-            {
-                Key = sampleKey,
-                Value = sampleValue
-            });
+            var putRes = _Fixture.Client.Put(sampleKey, sampleValue);
             var req = new TxnRequest();
             req.Compare.Add(new Compare()
             {
@@ -191,10 +142,7 @@ namespace ETCD.V3.Test
                 }
             });
             var txnRes = _Fixture.Client.KV.Txn(req);
-            var res = _Fixture.Client.KV.Range(new RangeRequest()
-            {
-                Key = sampleKey
-            });
+            var res = _Fixture.Client.Range(sampleKey);
             Assert.Equal(1, res.Count);
             Assert.Equal(1, res.Kvs.Count);
             Assert.Equal(putValue.ToStringUtf8(), res.Kvs[0].Value.ToStringUtf8());
