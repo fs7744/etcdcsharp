@@ -11,7 +11,7 @@ namespace ETCD.V3.Test
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Client.Close();
         }
 
         public Client Client { get; private set; }
