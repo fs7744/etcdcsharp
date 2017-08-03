@@ -20,11 +20,11 @@ namespace ETCD.V3
         public MaintenanceClient Maintenance { get; private set; }
         public LeaseClient Lease { get; private set; }
         public WatchClient Watch { get; private set; }
+        public CallOptions CallToken { get; private set; }
 
         public Client(string target, string user = null, string password = null)
         {
             _Channel = new Channel(target, ChannelCredentials.Insecure);
-            _Channel.ConnectAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             Authebtucate(target, user, password);
             InitClient();
         }
@@ -39,15 +39,9 @@ namespace ETCD.V3
                     Name = user,
                     Password = password
                 });
-                var aai = CallCredentials.FromInterceptor((context, metadata) =>
-                {
-                    metadata.Add(new Metadata.Entry(Constants.Token, res.Token));
-                    return Task.CompletedTask;
-                });
-                var co = new CallOptions().WithCredentials(aai);
-                var cc = ChannelCredentials.Create(ChannelCredentials.Insecure, aai);
-                Close();
-                _Channel = new Channel(target, cc);
+                var metadata = new Metadata();
+                metadata.Add(new Metadata.Entry(Constants.Token, res.Token));
+                CallToken = new CallOptions(metadata);
             }
         }
 

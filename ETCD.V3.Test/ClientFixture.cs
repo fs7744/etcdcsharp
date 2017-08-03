@@ -6,7 +6,7 @@ namespace ETCD.V3.Test
     {
         public ClientFixture()
         {
-            Client = new Client(TestConstants.endpoints);
+            Client = new Client(TestConstants.endpoints, "root", "123");
         }
 
         public void Dispose()

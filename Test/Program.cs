@@ -1,5 +1,7 @@
 ﻿using ETCD.V3.Test;
 using System;
+using ETCD.V3;
+using System.Linq;
 
 namespace Test
 {
@@ -17,6 +19,11 @@ namespace Test
             test.GetAndDeleteWithPrefix();
             test.Txn();
             Console.WriteLine("End!");
+            //test._Fixture.Client.GetAll("").Kvs.ToList().ForEach(i =>
+            //{
+            //    Console.WriteLine($"{i.Key.ToStringUtf8()} : {i.Value.ToStringUtf8()}");
+            //});
+            //Console.ReadKey();
         }
     }
 }

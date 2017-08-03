@@ -7,6 +7,23 @@ namespace ETCD.V3
 {
     public static class KVExtensions
     {
+        public static readonly ByteString NoPrefixEnd = ByteString.CopyFrom(new byte[1] { 0 });
+
+        public static ByteString ToPrefixEnd(this ByteString byteString)
+        {
+            byte[] endKey = byteString.ToByteArray();
+            for (int i = endKey.Length - 1; i >= 0; i--)
+            {
+                if (endKey[i] < 0xff)
+                {
+                    endKey[i] = (byte)(endKey[i] + 1);
+                    return ByteString.CopyFrom(endKey);
+                }
+            }
+
+            return NoPrefixEnd;
+        }
+
         #region Put
 
         public static PutResponse Put(this Client client, string key, string value, long lease = 0,
@@ -20,7 +37,7 @@ namespace ETCD.V3
             bool prevKv = false, bool ignoreLease = false, bool ignoreValue = false)
         {
             var request = client.CreatePutRequest(key, value, lease, prevKv, ignoreLease, ignoreValue);
-            return client.KV.Put(request);
+            return client.KV.Put(request, client.CallToken);
         }
 
         public static PutRequest CreatePutRequest(this Client client, ByteString key, ByteString value,
@@ -50,7 +67,7 @@ namespace ETCD.V3
             bool prevKv = false, bool ignoreLease = false, bool ignoreValue = false)
         {
             var request = client.CreatePutRequest(key, value, lease, prevKv, ignoreLease, ignoreValue);
-            return client.KV.PutAsync(request);
+            return client.KV.PutAsync(request, client.CallToken);
         }
 
         #endregion Put
@@ -66,7 +83,7 @@ namespace ETCD.V3
             return new RangeRequest()
             {
                 Key = key,
-                RangeEnd = rangeEnd == null? key : rangeEnd,
+                RangeEnd = rangeEnd == null ? key.ToPrefixEnd() : rangeEnd,
                 Limit = limit,
                 Revision = revision,
                 SortOrder = sortOrder,
@@ -124,7 +141,7 @@ namespace ETCD.V3
             var request = client.CreateRangeRequest(key, rangeEnd,
                 limit, revision, sortOrder, sortTarget, serializable, keysOnly, countOnly, minModRevision,
                 maxModRevision, minCreateRevision, maxCreateRevision);
-            return client.KV.Range(request);
+            return client.KV.Range(request, client.CallToken);
         }
 
         public static AsyncUnaryCall<RangeResponse> RangeAsync(this Client client, string key, string rangeEnd = null,
@@ -148,7 +165,7 @@ namespace ETCD.V3
             var request = client.CreateRangeRequest(key, rangeEnd,
                 limit, revision, sortOrder, sortTarget, serializable, keysOnly, countOnly, minModRevision,
                 maxModRevision, minCreateRevision, maxCreateRevision);
-            return client.KV.RangeAsync(request);
+            return client.KV.RangeAsync(request, client.CallToken);
         }
 
         public static AsyncUnaryCall<RangeResponse> GetAllAsync(this Client client, string key,
@@ -183,7 +200,7 @@ namespace ETCD.V3
             return new DeleteRangeRequest()
             {
                 Key = key,
-                RangeEnd = rangeEnd == null ? key : rangeEnd,
+                RangeEnd = rangeEnd == null ? key.ToPrefixEnd() : rangeEnd,
                 PrevKv = prevKv
             };
         }
@@ -199,7 +216,7 @@ namespace ETCD.V3
            bool prevKv = false)
         {
             var request = client.CreateDeleteRangeRequest(key, rangeEnd, prevKv);
-            return client.KV.DeleteRange(request);
+            return client.KV.DeleteRange(request, client.CallToken);
         }
 
         public static DeleteRangeResponse DeleteAll(this Client client, string key, bool prevKv = false)
@@ -223,7 +240,7 @@ namespace ETCD.V3
            bool prevKv = false)
         {
             var request = client.CreateDeleteRangeRequest(key, rangeEnd, prevKv);
-            return client.KV.DeleteRangeAsync(request);
+            return client.KV.DeleteRangeAsync(request, client.CallToken);
         }
 
         public static AsyncUnaryCall<DeleteRangeResponse> DeleteAllAsync(this Client client, string key, bool prevKv = false)

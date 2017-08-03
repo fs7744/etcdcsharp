@@ -9,12 +9,12 @@ namespace ETCD.V3.Test
 {
     public class KVTest : IClassFixture<ClientFixture>
     {
-        private static readonly ByteString SAMPLE_KEY = ByteString.CopyFromUtf8("sample_key");
-        private static readonly ByteString SAMPLE_VALUE = ByteString.CopyFromUtf8("sample_value");
-        private static readonly ByteString SAMPLE_KEY_2 = ByteString.CopyFromUtf8("sample_key2");
-        private static readonly ByteString SAMPLE_VALUE_2 = ByteString.CopyFromUtf8("sample_value2");
-        private static readonly ByteString SAMPLE_KEY_3 = ByteString.CopyFromUtf8("sample_key3");
-        private ClientFixture _Fixture;
+        private static readonly ByteString SAMPLE_KEY = ByteString.CopyFromUtf8("/sample_key");
+        private static readonly ByteString SAMPLE_VALUE = ByteString.CopyFromUtf8("/sample_value");
+        private static readonly ByteString SAMPLE_KEY_2 = ByteString.CopyFromUtf8("/sample_key2");
+        private static readonly ByteString SAMPLE_VALUE_2 = ByteString.CopyFromUtf8("/sample_value2");
+        private static readonly ByteString SAMPLE_KEY_3 = ByteString.CopyFromUtf8("/sample_key3");
+        public ClientFixture _Fixture;
 
         public KVTest(ClientFixture fixture)
         {
@@ -28,7 +28,7 @@ namespace ETCD.V3.Test
             Assert.NotNull(res.Header);
             Assert.True(res.PrevKv == null);
 
-            //Delete(SAMPLE_KEY);
+            Delete(SAMPLE_KEY);
         }
 
         private void Delete(ByteString key, long? number = null)
@@ -104,6 +104,7 @@ namespace ETCD.V3.Test
                 Assert.Equal(prefix + (numPrefix - i - 1), res.Kvs[i].Key.ToStringUtf8());
                 Assert.Equal((numPrefix - i - 1).ToString(), res.Kvs[i].Value.ToStringUtf8());
             }
+            Delete(ByteString.CopyFromUtf8(prefix), numPrefix);
         }
 
         [Fact]
@@ -118,7 +119,7 @@ namespace ETCD.V3.Test
         [Fact]
         public void Txn()
         {
-            var sampleKey = ByteString.CopyFromUtf8("txn_key");
+            var sampleKey = ByteString.CopyFromUtf8("/txn_key");
             var sampleValue = ByteString.CopyFromUtf8("xyz");
             var cmpValue = ByteString.CopyFromUtf8("abc");
             var putValue = ByteString.CopyFromUtf8("XYZ");
