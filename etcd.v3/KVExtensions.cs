@@ -202,14 +202,12 @@ namespace ETCD.V3
             return client.KV.DeleteRange(request);
         }
 
-        public static DeleteRangeResponse DeleteAll(this Client client, string key, string rangeEnd = null,
-           bool prevKv = false)
+        public static DeleteRangeResponse DeleteAll(this Client client, string key, bool prevKv = false)
         {
-            return client.DeleteAll(ByteString.CopyFromUtf8(key), Constants.NullKey, prevKv);
+            return client.DeleteAll(ByteString.CopyFromUtf8(key), prevKv);
         }
 
-        public static DeleteRangeResponse DeleteAll(this Client client, ByteString key, ByteString rangeEnd = null,
-           bool prevKv = false)
+        public static DeleteRangeResponse DeleteAll(this Client client, ByteString key, bool prevKv = false)
         {
             return client.DeleteRange(key, Constants.NullKey, prevKv);
         }
@@ -228,14 +226,12 @@ namespace ETCD.V3
             return client.KV.DeleteRangeAsync(request);
         }
 
-        public static AsyncUnaryCall<DeleteRangeResponse> DeleteAllAsync(this Client client, string key, string rangeEnd = null,
-           bool prevKv = false)
+        public static AsyncUnaryCall<DeleteRangeResponse> DeleteAllAsync(this Client client, string key, bool prevKv = false)
         {
-            return client.DeleteAllAsync(ByteString.CopyFromUtf8(key), Constants.NullKey, prevKv);
+            return client.DeleteAllAsync(ByteString.CopyFromUtf8(key), prevKv);
         }
 
-        public static AsyncUnaryCall<DeleteRangeResponse> DeleteAllAsync(this Client client, ByteString key, ByteString rangeEnd = null,
-           bool prevKv = false)
+        public static AsyncUnaryCall<DeleteRangeResponse> DeleteAllAsync(this Client client, ByteString key, bool prevKv = false)
         {
             return client.DeleteRangeAsync(key, Constants.NullKey, prevKv);
         }
