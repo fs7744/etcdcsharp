@@ -66,7 +66,7 @@ namespace ETCD.V3
             return new RangeRequest()
             {
                 Key = key,
-                RangeEnd = rangeEnd,
+                RangeEnd = rangeEnd == null? key : rangeEnd,
                 Limit = limit,
                 Revision = revision,
                 SortOrder = sortOrder,
@@ -183,7 +183,7 @@ namespace ETCD.V3
             return new DeleteRangeRequest()
             {
                 Key = key,
-                RangeEnd = rangeEnd,
+                RangeEnd = rangeEnd == null ? key : rangeEnd,
                 PrevKv = prevKv
             };
         }

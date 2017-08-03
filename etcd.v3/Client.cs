@@ -1,5 +1,6 @@
 ﻿using Etcdserverpb;
 using Grpc.Core;
+using System;
 using System.Threading.Tasks;
 using static Etcdserverpb.Auth;
 using static Etcdserverpb.Cluster;
@@ -23,6 +24,7 @@ namespace ETCD.V3
         public Client(string target, string user = null, string password = null)
         {
             _Channel = new Channel(target, ChannelCredentials.Insecure);
+            _Channel.ConnectAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             Authebtucate(target, user, password);
             InitClient();
         }

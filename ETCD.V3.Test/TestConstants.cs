@@ -2,7 +2,6 @@
 {
     public class TestConstants
     {
-        public const string endpoints = "http://localhost:2379";
-        public const string peerUrls = "http://localhost:12380";
+        public const string endpoints = "127.0.0.1:2379";
     }
 }

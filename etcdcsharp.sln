@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "etcd.v3", "etcd.v3\etcd.v3.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETCD.V3.Test", "ETCD.V3.Test\ETCD.V3.Test.csproj", "{94CA1BF7-1777-4FE1-9851-32ACEBF98AA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{1FC5AF67-2629-4563-ADAC-500D5006AA81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{94CA1BF7-1777-4FE1-9851-32ACEBF98AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94CA1BF7-1777-4FE1-9851-32ACEBF98AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94CA1BF7-1777-4FE1-9851-32ACEBF98AA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC5AF67-2629-4563-ADAC-500D5006AA81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC5AF67-2629-4563-ADAC-500D5006AA81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC5AF67-2629-4563-ADAC-500D5006AA81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC5AF67-2629-4563-ADAC-500D5006AA81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -28,7 +28,7 @@ namespace ETCD.V3.Test
             Assert.NotNull(res.Header);
             Assert.True(res.PrevKv == null);
 
-            Delete(SAMPLE_KEY);
+            //Delete(SAMPLE_KEY);
         }
 
         private void Delete(ByteString key, long? number = null)
@@ -43,10 +43,17 @@ namespace ETCD.V3.Test
         [Fact]
         public void PutWithNotExistLease()
         {
-            var ex = Assert.Throws<Exception>(() =>
+            Exception ex = null;
+            try
             {
                 var res = _Fixture.Client.Put(SAMPLE_KEY, SAMPLE_VALUE, 9999L);
-            });
+            }
+            catch (Exception e)
+            {
+                ex = e;
+            }
+
+            Assert.Equal("Status(StatusCode=NotFound, Detail=\"etcdserver: requested lease not found\")", ex.Message);
         }
 
         [Fact]
