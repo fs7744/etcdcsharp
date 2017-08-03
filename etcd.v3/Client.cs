@@ -39,8 +39,10 @@ namespace ETCD.V3
                     Name = user,
                     Password = password
                 });
-                var metadata = new Metadata();
-                metadata.Add(new Metadata.Entry(Constants.Token, res.Token));
+                var metadata = new Metadata
+                {
+                    new Metadata.Entry(Constants.Token, res.Token)
+                };
                 CallToken = new CallOptions(metadata);
             }
         }
