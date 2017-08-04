@@ -19,13 +19,13 @@ namespace ETCD.V3
         public static LeaseGrantResponse LeaseGrant(this Client client, long ttl, long id)
         {
             var request = client.CreateLeaseGrantRequest(ttl, id);
-            return client.Lease.LeaseGrant(request, client.CallToken);
+            return client.Lease.LeaseGrant(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<LeaseGrantResponse> LeaseGrantAsync(this Client client, long ttl, long id)
         {
             var request = client.CreateLeaseGrantRequest(ttl, id);
-            return client.Lease.LeaseGrantAsync(request, client.CallToken);
+            return client.Lease.LeaseGrantAsync(request, client.AuthToken);
         }
 
         #endregion LeaseGrant
@@ -43,20 +43,20 @@ namespace ETCD.V3
         public static LeaseRevokeResponse LeaseRevoke(this Client client, long id)
         {
             var request = client.CreateLeaseRevokeRequest(id);
-            return client.Lease.LeaseRevoke(request, client.CallToken);
+            return client.Lease.LeaseRevoke(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<LeaseRevokeResponse> LeaseRevokeAsync(this Client client, long id)
         {
             var request = client.CreateLeaseRevokeRequest(id);
-            return client.Lease.LeaseRevokeAsync(request, client.CallToken);
+            return client.Lease.LeaseRevokeAsync(request, client.AuthToken);
         }
 
         #endregion LeaseRevoke
 
         public static AsyncDuplexStreamingCall<LeaseKeepAliveRequest, LeaseKeepAliveResponse> LeaseKeepAlive(this Client client)
         {
-            return client.Lease.LeaseKeepAlive(client.CallToken);
+            return client.Lease.LeaseKeepAlive(client.AuthToken);
         }
 
         #region LeaseTimeToLive
@@ -73,13 +73,13 @@ namespace ETCD.V3
         public static LeaseTimeToLiveResponse LeaseTimeToLive(this Client client, long id, bool keys = false)
         {
             var request = client.CreateLeaseTimeToLiveRequest(id, keys);
-            return client.Lease.LeaseTimeToLive(request, client.CallToken);
+            return client.Lease.LeaseTimeToLive(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<LeaseTimeToLiveResponse> LeaseTimeToLiveAsync(this Client client, long id, bool keys = false)
         {
             var request = client.CreateLeaseTimeToLiveRequest(id, keys);
-            return client.Lease.LeaseTimeToLiveAsync(request, client.CallToken);
+            return client.Lease.LeaseTimeToLiveAsync(request, client.AuthToken);
         }
 
         #endregion LeaseTimeToLive

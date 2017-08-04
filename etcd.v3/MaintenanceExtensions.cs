@@ -23,14 +23,14 @@ namespace ETCD.V3
             AlarmAction action = AlarmAction.Get, AlarmType alarm = AlarmType.None)
         {
             var request = client.CreateAlarmRequest(memberID, action, alarm);
-            return client.Maintenance.Alarm(request, client.CallToken);
+            return client.Maintenance.Alarm(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<AlarmResponse> AlarmAsync(this Client client, ulong memberID,
             AlarmAction action = AlarmAction.Get, AlarmType alarm = AlarmType.None)
         {
             var request = client.CreateAlarmRequest(memberID, action, alarm);
-            return client.Maintenance.AlarmAsync(request, client.CallToken);
+            return client.Maintenance.AlarmAsync(request, client.AuthToken);
         }
 
         #endregion Alarm
@@ -39,7 +39,7 @@ namespace ETCD.V3
 
         public static StatusResponse Status(this Client client)
         {
-            return client.Maintenance.Status(new StatusRequest(), client.CallToken);
+            return client.Maintenance.Status(new StatusRequest(), client.AuthToken);
         }
 
         public static AsyncUnaryCall<StatusResponse> StatusAsync(this Client client)
@@ -53,12 +53,12 @@ namespace ETCD.V3
 
         public static DefragmentResponse Defragment(this Client client)
         {
-            return client.Maintenance.Defragment(new DefragmentRequest(), client.CallToken);
+            return client.Maintenance.Defragment(new DefragmentRequest(), client.AuthToken);
         }
 
         public static AsyncUnaryCall<DefragmentResponse> DefragmentAsync(this Client client)
         {
-            return client.Maintenance.DefragmentAsync(new DefragmentRequest(), client.CallToken);
+            return client.Maintenance.DefragmentAsync(new DefragmentRequest(), client.AuthToken);
         }
 
         #endregion Defragment
@@ -67,12 +67,12 @@ namespace ETCD.V3
 
         public static HashResponse Hash(this Client client)
         {
-            return client.Maintenance.Hash(new HashRequest(), client.CallToken);
+            return client.Maintenance.Hash(new HashRequest(), client.AuthToken);
         }
 
         public static AsyncUnaryCall<HashResponse> HashAsync(this Client client)
         {
-            return client.Maintenance.HashAsync(new HashRequest(), client.CallToken);
+            return client.Maintenance.HashAsync(new HashRequest(), client.AuthToken);
         }
 
         #endregion Hash
@@ -81,7 +81,7 @@ namespace ETCD.V3
 
         public static AsyncServerStreamingCall<SnapshotResponse> Snapshot(this Client client)
         {
-            return client.Maintenance.Snapshot(new SnapshotRequest(), client.CallToken);
+            return client.Maintenance.Snapshot(new SnapshotRequest(), client.AuthToken);
         }
 
         #endregion Snapshot

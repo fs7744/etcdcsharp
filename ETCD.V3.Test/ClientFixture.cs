@@ -6,7 +6,8 @@ namespace ETCD.V3.Test
     {
         public ClientFixture()
         {
-            Client = new Client(TestConstants.endpoints, "root", "123");
+            Client = new Client(TestConstants.endpoints);
+            Client.NewAuthToken("root", "123");
         }
 
         public void Dispose()

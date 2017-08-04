@@ -37,7 +37,7 @@ namespace ETCD.V3
             bool prevKv = false, bool ignoreLease = false, bool ignoreValue = false)
         {
             var request = client.CreatePutRequest(key, value, lease, prevKv, ignoreLease, ignoreValue);
-            return client.KV.Put(request, client.CallToken);
+            return client.KV.Put(request, client.AuthToken);
         }
 
         public static PutRequest CreatePutRequest(this Client client, ByteString key, ByteString value,
@@ -67,7 +67,7 @@ namespace ETCD.V3
             bool prevKv = false, bool ignoreLease = false, bool ignoreValue = false)
         {
             var request = client.CreatePutRequest(key, value, lease, prevKv, ignoreLease, ignoreValue);
-            return client.KV.PutAsync(request, client.CallToken);
+            return client.KV.PutAsync(request, client.AuthToken);
         }
 
         #endregion Put
@@ -141,7 +141,7 @@ namespace ETCD.V3
             var request = client.CreateRangeRequest(key, rangeEnd,
                 limit, revision, sortOrder, sortTarget, serializable, keysOnly, countOnly, minModRevision,
                 maxModRevision, minCreateRevision, maxCreateRevision);
-            return client.KV.Range(request, client.CallToken);
+            return client.KV.Range(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<RangeResponse> RangeAsync(this Client client, string key, string rangeEnd = null,
@@ -165,7 +165,7 @@ namespace ETCD.V3
             var request = client.CreateRangeRequest(key, rangeEnd,
                 limit, revision, sortOrder, sortTarget, serializable, keysOnly, countOnly, minModRevision,
                 maxModRevision, minCreateRevision, maxCreateRevision);
-            return client.KV.RangeAsync(request, client.CallToken);
+            return client.KV.RangeAsync(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<RangeResponse> GetAllAsync(this Client client, string key,
@@ -216,7 +216,7 @@ namespace ETCD.V3
            bool prevKv = false)
         {
             var request = client.CreateDeleteRangeRequest(key, rangeEnd, prevKv);
-            return client.KV.DeleteRange(request, client.CallToken);
+            return client.KV.DeleteRange(request, client.AuthToken);
         }
 
         public static DeleteRangeResponse DeleteAll(this Client client, string key, bool prevKv = false)
@@ -240,7 +240,7 @@ namespace ETCD.V3
            bool prevKv = false)
         {
             var request = client.CreateDeleteRangeRequest(key, rangeEnd, prevKv);
-            return client.KV.DeleteRangeAsync(request, client.CallToken);
+            return client.KV.DeleteRangeAsync(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<DeleteRangeResponse> DeleteAllAsync(this Client client, string key, bool prevKv = false)
@@ -270,14 +270,14 @@ namespace ETCD.V3
           bool prevKv = false)
         {
             var request = client.CreateCompactionRequest(revision, physical);
-            return client.KV.Compact(request, client.CallToken);
+            return client.KV.Compact(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<CompactionResponse> CompactAsync(this Client client, long revision, bool physical = false,
           bool prevKv = false)
         {
             var request = client.CreateCompactionRequest(revision, physical);
-            return client.KV.CompactAsync(request, client.CallToken);
+            return client.KV.CompactAsync(request, client.AuthToken);
         }
 
         #endregion Compact
@@ -286,12 +286,12 @@ namespace ETCD.V3
 
         public static TxnResponse Txn(this Client client, TxnRequest request)
         {
-            return client.KV.Txn(request, client.CallToken);
+            return client.KV.Txn(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<TxnResponse> TxnAsync(this Client client, TxnRequest request)
         {
-            return client.KV.TxnAsync(request, client.CallToken);
+            return client.KV.TxnAsync(request, client.AuthToken);
         }
 
         #endregion Txn

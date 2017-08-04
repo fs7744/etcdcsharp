@@ -17,13 +17,13 @@ namespace ETCD.V3
         public static MemberAddResponse MemberAdd(this Client client, params string[] peerURLs)
         {
             var request = client.CreateMemberAddRequest(peerURLs);
-            return client.Cluster.MemberAdd(request, client.CallToken);
+            return client.Cluster.MemberAdd(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<MemberAddResponse> MemberAddAsync(this Client client, params string[] peerURLs)
         {
             var request = client.CreateMemberAddRequest(peerURLs);
-            return client.Cluster.MemberAddAsync(request, client.CallToken);
+            return client.Cluster.MemberAddAsync(request, client.AuthToken);
         }
 
         #endregion MemberAdd
@@ -38,13 +38,13 @@ namespace ETCD.V3
         public static MemberRemoveResponse MemberRemove(this Client client, ulong id)
         {
             var request = client.CreateMemberRemoveRequest(id);
-            return client.Cluster.MemberRemove(request, client.CallToken);
+            return client.Cluster.MemberRemove(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<MemberRemoveResponse> MemberRemoveAsync(this Client client, ulong id)
         {
             var request = client.CreateMemberRemoveRequest(id);
-            return client.Cluster.MemberRemoveAsync(request, client.CallToken);
+            return client.Cluster.MemberRemoveAsync(request, client.AuthToken);
         }
 
         #endregion MemberRemove
@@ -61,13 +61,13 @@ namespace ETCD.V3
         public static MemberUpdateResponse MemberUpdate(this Client client, ulong id, params string[] peerURLs)
         {
             var request = client.CreateMemberUpdateRequest(id, peerURLs);
-            return client.Cluster.MemberUpdate(request, client.CallToken);
+            return client.Cluster.MemberUpdate(request, client.AuthToken);
         }
 
         public static AsyncUnaryCall<MemberUpdateResponse> MemberUpdateAsync(this Client client, ulong id, params string[] peerURLs)
         {
             var request = client.CreateMemberUpdateRequest(id, peerURLs);
-            return client.Cluster.MemberUpdateAsync(request, client.CallToken);
+            return client.Cluster.MemberUpdateAsync(request, client.AuthToken);
         }
 
         #endregion MemberRemove
@@ -76,12 +76,12 @@ namespace ETCD.V3
 
         public static MemberListResponse MemberList(this Client client)
         {
-            return client.Cluster.MemberList(new MemberListRequest(), client.CallToken);
+            return client.Cluster.MemberList(new MemberListRequest(), client.AuthToken);
         }
 
         public static AsyncUnaryCall<MemberListResponse> MemberListAsync(this Client client)
         {
-            return client.Cluster.MemberListAsync(new MemberListRequest(), client.CallToken);
+            return client.Cluster.MemberListAsync(new MemberListRequest(), client.AuthToken);
         }
 
         #endregion MemberList

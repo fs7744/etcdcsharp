@@ -1,4 +1,7 @@
-﻿using Grpc.Core;
+﻿using Google.Protobuf;
+using Grpc.Core;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 using static Etcdserverpb.Auth;
 using static Etcdserverpb.Cluster;
@@ -18,26 +21,25 @@ namespace ETCD.V3
         public MaintenanceClient Maintenance { get; private set; }
         public LeaseClient Lease { get; private set; }
         public WatchClient Watch { get; private set; }
-        public CallOptions CallToken { get; private set; }
+        public CallOptions AuthToken { get; private set; }
 
-        public Client(string target, string user = null, string password = null)
+        public Client(string target)
         {
             _Channel = new Channel(target, ChannelCredentials.Insecure);
             InitClient();
-            NewToken(user, password);
         }
 
-        public void NewToken(string user, string password)
+        public void NewAuthToken(string user, string password, Metadata headers = null,
+            DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken),
+            WriteOptions writeOptions = null, ContextPropagationToken propagationToken = null,
+            CallCredentials credentials = null)
         {
-            if (!string.IsNullOrWhiteSpace(user))
-            {
-                var res = this.Authebtucate(user, password);
-                var metadata = new Metadata
-                {
-                    new Metadata.Entry(Constants.Token, res.Token)
-                };
-                CallToken = new CallOptions(metadata);
-            }
+            ProtoPreconditions.CheckNotNull(user, nameof(user));
+            ProtoPreconditions.CheckNotNull(password, nameof(password));
+            var res = this.Authebtucate(user, password);
+            var metadata = headers ?? new Metadata();
+            metadata.Add(new Metadata.Entry(Constants.Token, res.Token));
+            AuthToken = new CallOptions(metadata, deadline, cancellationToken, writeOptions, propagationToken, credentials);
         }
 
         private void InitClient()
