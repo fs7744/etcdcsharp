@@ -24,15 +24,14 @@ namespace ETCD.V3
         public Client(string target, string user = null, string password = null)
         {
             _Channel = new Channel(target, ChannelCredentials.Insecure);
-            Authebtucate(user, password);
             InitClient();
+            Authebtucate(user, password);
         }
 
         public void Authebtucate(string user, string password)
         {
             if (!string.IsNullOrWhiteSpace(user))
             {
-                Auth = new AuthClient(_Channel);
                 var res = Auth.Authenticate(new AuthenticateRequest()
                 {
                     Name = user,
