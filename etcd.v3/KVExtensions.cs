@@ -7,8 +7,6 @@ namespace ETCD.V3
 {
     public static class KVExtensions
     {
-        public static readonly ByteString NoPrefixEnd = ByteString.CopyFrom(new byte[1] { 0 });
-
         public static ByteString ToPrefixEnd(this ByteString byteString)
         {
             byte[] endKey = byteString.ToByteArray();
@@ -21,11 +19,23 @@ namespace ETCD.V3
                 }
             }
 
-            return NoPrefixEnd;
+            return Constants.NullKey;
         }
 
         #region Put
 
+        /// <summary>
+        /// Put puts the given key into the key-value store.
+        /// A put request increments the revision of the key-value store
+        /// and generates one event in the event history.
+        /// </summary>
+        /// <param name="key">key is the key, in Utf8 string, will, to put into the key-value store.</param>
+        /// <param name="value">value is the value, in Utf8 string, to associate with the key in the key-value store.</param>
+        /// <param name="lease">Defualt value is 0. lease is the lease ID to associate with the key in the key-value store. A lease value of 0 indicates no lease.</param>
+        /// <param name="prevKv">Defualt value is false. If prev_kv is set, etcd gets the previous key-value pair before changing it. The previous key-value pair will be returned in the put response.</param>
+        /// <param name="ignoreLease">Defualt value is false. If ignore_lease is set, etcd updates the key using its current lease. Returns an error if the key does not exist.</param>
+        /// <param name="ignoreValue">Defualt value is false. If ignore_value is set, etcd updates the key using its current value. Returns an error if the key does not exist.</param>
+        /// <returns>The response received from the server.</returns>
         public static PutResponse Put(this Client client, string key, string value, long lease = 0,
             bool prevKv = false, bool ignoreLease = false, bool ignoreValue = false)
         {
@@ -33,6 +43,18 @@ namespace ETCD.V3
                 lease, prevKv, ignoreLease, ignoreValue);
         }
 
+        /// <summary>
+        /// Put puts the given key into the key-value store.
+        /// A put request increments the revision of the key-value store
+        /// and generates one event in the event history.
+        /// </summary>
+        /// <param name="key">key is the key, in bytes, to put into the key-value store.</param>
+        /// <param name="value">value is the value, in bytes, to associate with the key in the key-value store.</param>
+        /// <param name="lease">Defualt value is 0. lease is the lease ID to associate with the key in the key-value store. A lease value of 0 indicates no lease.</param>
+        /// <param name="prevKv">Defualt value is false. If prev_kv is set, etcd gets the previous key-value pair before changing it. The previous key-value pair will be returned in the put response.</param>
+        /// <param name="ignoreLease">Defualt value is false. If ignore_lease is set, etcd updates the key using its current lease. Returns an error if the key does not exist.</param>
+        /// <param name="ignoreValue">Defualt value is false. If ignore_value is set, etcd updates the key using its current value. Returns an error if the key does not exist.</param>
+        /// <returns>The response received from the server.</returns>
         public static PutResponse Put(this Client client, ByteString key, ByteString value, long lease = 0,
             bool prevKv = false, bool ignoreLease = false, bool ignoreValue = false)
         {
@@ -40,6 +62,16 @@ namespace ETCD.V3
             return client.KV.Put(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// Create Put Request.
+        /// </summary>
+        /// <param name="key">key is the key, in bytes, to put into the key-value store.</param>
+        /// <param name="value">value is the value, in bytes, to associate with the key in the key-value store.</param>
+        /// <param name="lease">Defualt value is 0. lease is the lease ID to associate with the key in the key-value store. A lease value of 0 indicates no lease.</param>
+        /// <param name="prevKv">Defualt value is false. If prev_kv is set, etcd gets the previous key-value pair before changing it. The previous key-value pair will be returned in the put response.</param>
+        /// <param name="ignoreLease">Defualt value is false. If ignore_lease is set, etcd updates the key using its current lease. Returns an error if the key does not exist.</param>
+        /// <param name="ignoreValue">Defualt value is false. If ignore_value is set, etcd updates the key using its current value. Returns an error if the key does not exist.</param>
+        /// <returns>PutRequest</returns>
         public static PutRequest CreatePutRequest(this Client client, ByteString key, ByteString value,
             long lease = 0, bool prevKv = false, bool ignoreLease = false, bool ignoreValue = false)
         {
@@ -54,6 +86,18 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// Put puts the given key into the key-value store.
+        /// A put request increments the revision of the key-value store
+        /// and generates one event in the event history.
+        /// </summary>
+        /// <param name="key">key is the key, in Utf8 string, will, to put into the key-value store.</param>
+        /// <param name="value">value is the value, in Utf8 string, to associate with the key in the key-value store.</param>
+        /// <param name="lease">Defualt value is 0. lease is the lease ID to associate with the key in the key-value store. A lease value of 0 indicates no lease.</param>
+        /// <param name="prevKv">Defualt value is false. If prev_kv is set, etcd gets the previous key-value pair before changing it. The previous key-value pair will be returned in the put response.</param>
+        /// <param name="ignoreLease">Defualt value is false. If ignore_lease is set, etcd updates the key using its current lease. Returns an error if the key does not exist.</param>
+        /// <param name="ignoreValue">Defualt value is false. If ignore_value is set, etcd updates the key using its current value. Returns an error if the key does not exist.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<PutResponse> PutAsync(this Client client, string key, string value,
             long lease = 0,
             bool prevKv = false, bool ignoreLease = false, bool ignoreValue = false)
@@ -62,6 +106,18 @@ namespace ETCD.V3
                 lease, prevKv, ignoreLease, ignoreValue);
         }
 
+        /// <summary>
+        /// Put puts the given key into the key-value store.
+        /// A put request increments the revision of the key-value store
+        /// and generates one event in the event history.
+        /// </summary>
+        /// <param name="key">key is the key, in bytes, to put into the key-value store.</param>
+        /// <param name="value">value is the value, in bytes, to associate with the key in the key-value store.</param>
+        /// <param name="lease">Defualt value is 0. lease is the lease ID to associate with the key in the key-value store. A lease value of 0 indicates no lease.</param>
+        /// <param name="prevKv">Defualt value is false. If prev_kv is set, etcd gets the previous key-value pair before changing it. The previous key-value pair will be returned in the put response.</param>
+        /// <param name="ignoreLease">Defualt value is false. If ignore_lease is set, etcd updates the key using its current lease. Returns an error if the key does not exist.</param>
+        /// <param name="ignoreValue">Defualt value is false. If ignore_value is set, etcd updates the key using its current value. Returns an error if the key does not exist.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<PutResponse> PutAsync(this Client client, ByteString key, ByteString value,
             long lease = 0,
             bool prevKv = false, bool ignoreLease = false, bool ignoreValue = false)
@@ -74,6 +130,39 @@ namespace ETCD.V3
 
         #region Range
 
+        /// <summary>
+        /// Create Range Request.
+        /// </summary>
+        /// <param name="key">key is the first key for the range. If range_end is not given, the request only looks up key.</param>
+        /// <param name="rangeEnd">range_end is the upper bound on the requested range [key, range_end).
+        /// If range_end is '\0', the range is all keys >= key.
+        /// If range_end is key plus one (e.g., "aa"+1 == "ab", "a\xff"+1 == "b"),
+        /// then the range request gets all keys prefixed with key.
+        /// If both key and range_end are '\0', then the range request returns all keys.</param>
+        /// <param name="limit">Defualt value is 0. limit is a limit on the number of keys returned for the request. When limit is set to 0,
+        /// it is treated as no limit.</param>
+        /// <param name="revision">Defualt value is 0. revision is the point-in-time of the key-value store to use for the range.
+        /// If revision is less or equal to zero, the range is over the newest key-value store.
+        /// If the revision has been compacted, ErrCompacted is returned as a response.</param>
+        /// <param name="sortOrder">Defualt value is SortOrder.None. sort_order is the order for returned sorted results.</param>
+        /// <param name="sortTarget">Defualt value is SortTarget.Key. sort_target is the key-value field to use for sorting.</param>
+        /// <param name="serializable">Defualt value is false. serializable sets the range request to use serializable member-local reads.
+        /// Range requests are linearizable by default; linearizable requests have higher
+        /// latency and lower throughput than serializable requests but reflect the current
+        /// consensus of the cluster. For better performance, in exchange for possible stale reads,
+        /// a serializable range request is served locally without needing to reach consensus
+        /// with other nodes in the cluster.</param>
+        /// <param name="keysOnly">Defualt value is false. keys_only when set returns only the keys and not the values.</param>
+        /// <param name="countOnly">Defualt value is false. count_only when set returns only the count of the keys in the range.</param>
+        /// <param name="minModRevision">Defualt value is 0. min_mod_revision is the lower bound for returned key mod revisions; all keys with
+        /// lesser mod revisions will be filtered away.</param>
+        /// <param name="maxModRevision">Defualt value is 0. max_mod_revision is the upper bound for returned key mod revisions; all keys with
+        /// greater mod revisions will be filtered away.</param>
+        /// <param name="minCreateRevision">Defualt value is 0. min_create_revision is the lower bound for returned key create revisions; all keys with
+        /// lesser create trevisions will be filtered away.</param>
+        /// <param name="maxCreateRevision">Defualt value is 0. max_create_revision is the upper bound for returned key create revisions; all keys with
+        /// greater create revisions will be filtered away.</param>
+        /// <returns>RangeRequest</returns>
         public static RangeRequest CreateRangeRequest(this Client client, ByteString key, ByteString rangeEnd = null,
            long limit = 0, long revision = 0, SortOrder sortOrder = SortOrder.None,
            SortTarget sortTarget = SortTarget.Key, bool serializable = false,
@@ -98,6 +187,39 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// Range gets the keys in the range from the key-value store.
+        /// </summary>
+        /// <param name="key">key is the first key for the range. If range_end is not given, the request only looks up key.</param>
+        /// <param name="rangeEnd">range_end is the upper bound on the requested range [key, range_end).
+        /// If range_end is '\0', the range is all keys >= key.
+        /// If range_end is key plus one (e.g., "aa"+1 == "ab", "a\xff"+1 == "b"),
+        /// then the range request gets all keys prefixed with key.
+        /// If both key and range_end are '\0', then the range request returns all keys.</param>
+        /// <param name="limit">Defualt value is 0. limit is a limit on the number of keys returned for the request. When limit is set to 0,
+        /// it is treated as no limit.</param>
+        /// <param name="revision">Defualt value is 0. revision is the point-in-time of the key-value store to use for the range.
+        /// If revision is less or equal to zero, the range is over the newest key-value store.
+        /// If the revision has been compacted, ErrCompacted is returned as a response.</param>
+        /// <param name="sortOrder">Defualt value is SortOrder.None. sort_order is the order for returned sorted results.</param>
+        /// <param name="sortTarget">Defualt value is SortTarget.Key. sort_target is the key-value field to use for sorting.</param>
+        /// <param name="serializable">Defualt value is false. serializable sets the range request to use serializable member-local reads.
+        /// Range requests are linearizable by default; linearizable requests have higher
+        /// latency and lower throughput than serializable requests but reflect the current
+        /// consensus of the cluster. For better performance, in exchange for possible stale reads,
+        /// a serializable range request is served locally without needing to reach consensus
+        /// with other nodes in the cluster.</param>
+        /// <param name="keysOnly">Defualt value is false. keys_only when set returns only the keys and not the values.</param>
+        /// <param name="countOnly">Defualt value is false. count_only when set returns only the count of the keys in the range.</param>
+        /// <param name="minModRevision">Defualt value is 0. min_mod_revision is the lower bound for returned key mod revisions; all keys with
+        /// lesser mod revisions will be filtered away.</param>
+        /// <param name="maxModRevision">Defualt value is 0. max_mod_revision is the upper bound for returned key mod revisions; all keys with
+        /// greater mod revisions will be filtered away.</param>
+        /// <param name="minCreateRevision">Defualt value is 0. min_create_revision is the lower bound for returned key create revisions; all keys with
+        /// lesser create trevisions will be filtered away.</param>
+        /// <param name="maxCreateRevision">Defualt value is 0. max_create_revision is the upper bound for returned key create revisions; all keys with
+        /// greater create revisions will be filtered away.</param>
+        /// <returns>The response received from the server.</returns>
         public static RangeResponse Range(this Client client, string key, string rangeEnd = null,
            long limit = 0, long revision = 0, SortOrder sortOrder = SortOrder.None,
            SortTarget sortTarget = SortTarget.Key, bool serializable = false,
