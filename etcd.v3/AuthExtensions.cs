@@ -9,6 +9,12 @@ namespace ETCD.V3
     {
         #region Authebtucate
 
+        /// <summary>
+        /// Authenticate processes an authenticate request.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <param name="password">User Password.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthenticateRequest CreateAuthenticateRequest(this Client client, string name, string password)
         {
             return new AuthenticateRequest()
@@ -18,12 +24,24 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// Authenticate processes an authenticate request.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <param name="password">User Password.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthenticateResponse Authebtucate(this Client client, string name, string password)
         {
             var request = client.CreateAuthenticateRequest(name, password);
             return client.Auth.Authenticate(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// Authenticate processes an authenticate request.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <param name="password">User Password.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthenticateResponse> AuthenticateAsync(this Client client, string name, string password)
         {
             var request = client.CreateAuthenticateRequest(name, password);
@@ -34,11 +52,19 @@ namespace ETCD.V3
 
         #region AuthEnable
 
+        /// <summary>
+        /// AuthEnable enables authentication.
+        /// </summary>
+        /// <returns>The response received from the server.</returns>
         public static AuthEnableResponse AuthEnable(this Client client)
         {
             return client.Auth.AuthEnable(new AuthEnableRequest(), client.AuthToken);
         }
 
+        /// <summary>
+        /// AuthEnable enables authentication.
+        /// </summary>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthEnableResponse> AuthEnableAsync(this Client client)
         {
             return client.Auth.AuthEnableAsync(new AuthEnableRequest(), client.AuthToken);
@@ -48,11 +74,19 @@ namespace ETCD.V3
 
         #region AuthDisable
 
+        /// <summary>
+        /// AuthDisable disables authentication.
+        /// </summary>
+        /// <returns>The response received from the server.</returns>
         public static AuthDisableResponse AuthDisable(this Client client)
         {
             return client.Auth.AuthDisable(new AuthDisableRequest(), client.AuthToken);
         }
 
+        /// <summary>
+        /// AuthDisable disables authentication.
+        /// </summary>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthDisableResponse> AuthDisableAsync(this Client client)
         {
             return client.Auth.AuthDisableAsync(new AuthDisableRequest(), client.AuthToken);
@@ -62,6 +96,12 @@ namespace ETCD.V3
 
         #region AuthDisable
 
+        /// <summary>
+        /// Create AuthUserAddRequest.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <param name="password">User Password.</param>
+        /// <returns>AuthUserAddRequest.</returns>
         public static AuthUserAddRequest CreateAuthUserAddRequest(this Client client, string name, string password)
         {
             return new AuthUserAddRequest()
@@ -71,12 +111,24 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// UserAdd adds a new user.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <param name="password">User Password.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthUserAddResponse UserAdd(this Client client, string name, string password)
         {
             var request = client.CreateAuthUserAddRequest(name, password);
             return client.Auth.UserAdd(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// UserAdd adds a new user.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <param name="password">User Password.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthUserAddResponse> UserAddAsync(this Client client, string name, string password)
         {
             var request = client.CreateAuthUserAddRequest(name, password);
@@ -86,7 +138,12 @@ namespace ETCD.V3
         #endregion AuthDisable
 
         #region UserGet
-
+        
+        /// <summary>
+        /// Create AuthUserGetRequest.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <returns>AuthUserGetRequest.</returns>
         public static AuthUserGetRequest CreateAuthUserGetRequest(this Client client, string name)
         {
             return new AuthUserGetRequest()
@@ -95,12 +152,22 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// UserGet gets detailed user information.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthUserGetResponse UserGet(this Client client, string name)
         {
             var request = client.CreateAuthUserGetRequest(name);
             return client.Auth.UserGet(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// UserGet gets detailed user information.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthUserGetResponse> UserGetAsync(this Client client, string name)
         {
             var request = client.CreateAuthUserGetRequest(name);
@@ -111,11 +178,19 @@ namespace ETCD.V3
 
         #region UserList
 
+        /// <summary>
+        /// UserList gets a list of all users.
+        /// </summary>
+        /// <returns>The response received from the server.</returns>
         public static AuthUserListResponse UserList(this Client client)
         {
             return client.Auth.UserList(new AuthUserListRequest(), client.AuthToken);
         }
 
+        /// <summary>
+        /// UserList gets a list of all users.
+        /// </summary>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthUserListResponse> UserListAsync(this Client client)
         {
             return client.Auth.UserListAsync(new AuthUserListRequest(), client.AuthToken);
@@ -125,6 +200,11 @@ namespace ETCD.V3
 
         #region UserDelete
 
+        /// <summary>
+        /// Create AuthUserDeleteRequest.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <returns>AuthUserDeleteRequest.</returns>
         public static AuthUserDeleteRequest CreateAuthUserDeleteRequest(this Client client, string name)
         {
             return new AuthUserDeleteRequest()
@@ -133,12 +213,22 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// UserDelete deletes a specified user.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthUserDeleteResponse UserDelete(this Client client, string name)
         {
             var request = client.CreateAuthUserDeleteRequest(name);
             return client.Auth.UserDelete(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// UserDelete deletes a specified user.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthUserDeleteResponse> UserDeleteAsync(this Client client, string name)
         {
             var request = client.CreateAuthUserDeleteRequest(name);
@@ -149,6 +239,12 @@ namespace ETCD.V3
 
         #region UserChangePassword
 
+        /// <summary>
+        /// Create AuthUserChangePasswordRequest
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <param name="password">User Password.</param>
+        /// <returns>AuthUserChangePasswordRequest.</returns>
         public static AuthUserChangePasswordRequest CreateAuthUserChangePasswordRequest(this Client client,
             string name, string password)
         {
@@ -159,12 +255,24 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// UserChangePassword changes the password of a specified user.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <param name="password">User Password.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthUserChangePasswordResponse UserChangePassword(this Client client, string name, string password)
         {
             var request = client.CreateAuthUserChangePasswordRequest(name, password);
             return client.Auth.UserChangePassword(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// UserChangePassword changes the password of a specified user.
+        /// </summary>
+        /// <param name="name">User Name.</param>
+        /// <param name="password">User Password.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthUserChangePasswordResponse> UserChangePasswordAsync(
             this Client client, string name, string password)
         {
@@ -176,6 +284,12 @@ namespace ETCD.V3
 
         #region UserGrantRole
 
+        /// <summary>
+        /// Create UserGrantRoleRequest.
+        /// </summary>
+        /// <param name="user">user is the name of the user which should be granted a given role.</param>
+        /// <param name="role">role is the name of the role to grant to the user.</param>
+        /// <returns>AuthUserGrantRoleRequest.</returns>
         public static AuthUserGrantRoleRequest CreateUserGrantRoleRequest(this Client client,
             string user, string role)
         {
@@ -186,6 +300,12 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// UserGrant grants a role to a specified user.
+        /// </summary>
+        /// <param name="user">user is the name of the user which should be granted a given role.</param>
+        /// <param name="role">role is the name of the role to grant to the user.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthUserGrantRoleResponse UserGrantRole(this Client client,
             string user, string role)
         {
@@ -193,6 +313,12 @@ namespace ETCD.V3
             return client.Auth.UserGrantRole(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// UserGrant grants a role to a specified user.
+        /// </summary>
+        /// <param name="user">user is the name of the user which should be granted a given role.</param>
+        /// <param name="role">role is the name of the role to grant to the user.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthUserGrantRoleResponse> UserGrantRoleAsync(
             this Client client, string user, string role)
         {
@@ -204,6 +330,12 @@ namespace ETCD.V3
 
         #region UserRevokeRole
 
+        /// <summary>
+        /// Create UserRevokeRoleRequest.
+        /// </summary>
+        /// <param name="user">user is the name of the user which should be Revoked a given role.</param>
+        /// <param name="role">role is the name of the role to Revoked to the user.</param>
+        /// <returns>AuthUserRevokeRoleRequest.</returns>
         public static AuthUserRevokeRoleRequest CreateUserRevokeRoleRequest(this Client client,
             string user, string role)
         {
@@ -214,6 +346,12 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// UserRevokeRole revokes a role of specified user.
+        /// </summary>
+        /// <param name="user">user is the name of the user which should be Revoked a given role.</param>
+        /// <param name="role">role is the name of the role to Revoked to the user.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthUserRevokeRoleResponse UserRevokeRole(this Client client,
             string user, string role)
         {
@@ -221,6 +359,12 @@ namespace ETCD.V3
             return client.Auth.UserRevokeRole(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// UserRevokeRole revokes a role of specified user.
+        /// </summary>
+        /// <param name="user">user is the name of the user which should be Revoked a given role.</param>
+        /// <param name="role">role is the name of the role to Revoked to the user.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthUserRevokeRoleResponse> UserRevokeRoleAsync(
             this Client client, string user, string role)
         {
@@ -232,6 +376,11 @@ namespace ETCD.V3
 
         #region RoleAdd
 
+        /// <summary>
+        /// Create RoleGetRequest.
+        /// </summary>
+        /// <param name="role">name is the name of the role to add to the authentication system.</param>
+        /// <returns>AuthRoleGetRequest.</returns>
         public static AuthRoleAddRequest CreateRoleAddRequest(this Client client, string role)
         {
             return new AuthRoleAddRequest()
@@ -240,12 +389,22 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// RoleAdd adds a new role.
+        /// </summary>
+        /// <param name="role">name is the name of the role to add to the authentication system.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthRoleAddResponse RoleAdd(this Client client, string role)
         {
             var request = client.CreateRoleAddRequest(role);
             return client.Auth.RoleAdd(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// RoleAdd adds a new role.
+        /// </summary>
+        /// <param name="role">name is the name of the role to add to the authentication system.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthRoleAddResponse> RoleAddAsync(
             this Client client, string role)
         {
@@ -257,6 +416,11 @@ namespace ETCD.V3
 
         #region RoleGet
 
+        /// <summary>
+        /// Create RoleGetRequest.
+        /// </summary>
+        /// <param name="role">The role name.</param>
+        /// <returns>AuthRoleGetRequest.</returns>
         public static AuthRoleGetRequest CreateRoleGetRequest(this Client client, string role)
         {
             return new AuthRoleGetRequest()
@@ -265,12 +429,22 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// RoleGet gets detailed role information.
+        /// </summary>
+        /// <param name="role">The role name.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthRoleGetResponse RoleGet(this Client client, string role)
         {
             var request = client.CreateRoleGetRequest(role);
             return client.Auth.RoleGet(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// RoleGet gets detailed role information.
+        /// </summary>
+        /// <param name="role">The role name.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthRoleGetResponse> RoleGetAsync(
             this Client client, string role)
         {
@@ -282,11 +456,19 @@ namespace ETCD.V3
 
         #region RoleList
 
+        /// <summary>
+        /// RoleList gets lists of all roles.
+        /// </summary>
+        /// <returns>The response received from the server.</returns>
         public static AuthRoleListResponse RoleList(this Client client)
         {
             return client.Auth.RoleList(new AuthRoleListRequest(), client.AuthToken);
         }
 
+        /// <summary>
+        /// RoleList gets lists of all roles.
+        /// </summary>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthRoleListResponse> RoleListAsync(this Client client)
         {
             return client.Auth.RoleListAsync(new AuthRoleListRequest(), client.AuthToken);
@@ -296,6 +478,11 @@ namespace ETCD.V3
 
         #region RoleDelete
 
+        /// <summary>
+        /// Create RoleDeleteRequest.
+        /// </summary>
+        /// <param name="role">The role name.</param>
+        /// <returns>AuthRoleDeleteRequest.</returns>
         public static AuthRoleDeleteRequest CreateRoleDeleteRequest(this Client client, string role)
         {
             return new AuthRoleDeleteRequest()
@@ -304,12 +491,22 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// RoleDelete deletes a specified role.
+        /// </summary>
+        /// <param name="role">The role name.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthRoleDeleteResponse RoleDelete(this Client client, string role)
         {
             var request = client.CreateRoleDeleteRequest(role);
             return client.Auth.RoleDelete(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// RoleDelete deletes a specified role.
+        /// </summary>
+        /// <param name="role">The role name.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthRoleDeleteResponse> RoleDeleteAsync(
             this Client client, string role)
         {
@@ -321,6 +518,18 @@ namespace ETCD.V3
 
         #region RoleGrantPermission
 
+        /// <summary>
+        /// Create RoleGrantPermissionRequest.
+        /// </summary>
+        /// <param name="name">name is the name of the role which will be granted the permission.</param>
+        /// <param name="key">key is the first key to RoleGrantPermission.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <param name="permType">Permission message type.</param>
+        /// <returns>AuthRoleGrantPermissionRequest.</returns>
         public static AuthRoleGrantPermissionRequest CreateRoleGrantPermissionRequest(this Client client,
             string name, ByteString key, ByteString rangeEnd, Permission.Types.Type permType = Permission.Types.Type.Read)
         {
@@ -336,6 +545,18 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// RoleGrantPermission grants a permission of a specified key or range to a specified role.
+        /// </summary>
+        /// <param name="name">name is the name of the role which will be granted the permission.</param>
+        /// <param name="key">key is the first key to RoleGrantPermission.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <param name="permType">Permission message type.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthRoleGrantPermissionResponse RoleGrantPermission(this Client client,
             string name, ByteString key, ByteString rangeEnd, Permission.Types.Type permType = Permission.Types.Type.Read)
         {
@@ -343,6 +564,18 @@ namespace ETCD.V3
             return client.Auth.RoleGrantPermission(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// RoleGrantPermission grants a permission of a specified key or range to a specified role.
+        /// </summary>
+        /// <param name="name">name is the name of the role which will be granted the permission.</param>
+        /// <param name="key">key is the first key to RoleGrantPermission.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <param name="permType">Permission message type.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthRoleGrantPermissionResponse RoleGrantPermission(this Client client,
             string name, string key, string rangeEnd, Permission.Types.Type permType = Permission.Types.Type.Read)
         {
@@ -350,6 +583,18 @@ namespace ETCD.V3
                 rangeEnd == null ? null : ByteString.CopyFromUtf8(rangeEnd), permType);
         }
 
+        /// <summary>
+        /// RoleGrantPermission grants a permission of a specified key or range to a specified role.
+        /// </summary>
+        /// <param name="name">name is the name of the role which will be granted the permission.</param>
+        /// <param name="key">key is the first key to RoleGrantPermission.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <param name="permType">Permission message type.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthRoleGrantPermissionResponse> RoleGrantPermissionAsync(
             this Client client, string name, ByteString key, ByteString rangeEnd, Permission.Types.Type permType = Permission.Types.Type.Read)
         {
@@ -357,6 +602,18 @@ namespace ETCD.V3
             return client.Auth.RoleGrantPermissionAsync(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// RoleGrantPermission grants a permission of a specified key or range to a specified role.
+        /// </summary>
+        /// <param name="name">name is the name of the role which will be granted the permission.</param>
+        /// <param name="key">key is the first key to RoleGrantPermission.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <param name="permType">Permission message type.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthRoleGrantPermissionResponse> RoleGrantPermissionAsync(this Client client,
             string name, string key, string rangeEnd, Permission.Types.Type permType = Permission.Types.Type.Read)
         {
@@ -368,6 +625,17 @@ namespace ETCD.V3
 
         #region RoleRevokePermission
 
+        /// <summary>
+        /// Create RoleRevokePermissionRequest.
+        /// </summary>
+        /// <param name="role">The role name.</param>
+        /// <param name="key">key is the first key to RoleGrantPermission.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <returns>AuthRoleRevokePermissionRequest.</returns>
         public static AuthRoleRevokePermissionRequest CreateRoleRevokePermissionRequest(this Client client,
             string role, string key, string rangeEnd)
         {
@@ -379,6 +647,17 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// RoleRevokePermission revokes a key or range permission of a specified role.
+        /// </summary>
+        /// <param name="role">The role name.</param>
+        /// <param name="key">key is the first key to RoleGrantPermission.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <returns>The response received from the server.</returns>
         public static AuthRoleRevokePermissionResponse RoleRevokePermission(this Client client,
             string role, string key, string rangeEnd)
         {
@@ -386,6 +665,17 @@ namespace ETCD.V3
             return client.Auth.RoleRevokePermission(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// RoleRevokePermission revokes a key or range permission of a specified role.
+        /// </summary>
+        /// <param name="role">The role name.</param>
+        /// <param name="key">key is the first key to RoleGrantPermission.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthRoleRevokePermissionResponse> RoleRevokePermissionAsync(
             this Client client, string role, string key, string rangeEnd)
         {
