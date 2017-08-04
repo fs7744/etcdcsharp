@@ -23,9 +23,9 @@ namespace ETCD.V3
         public WatchClient Watch { get; private set; }
         public CallOptions AuthToken { get; private set; }
 
-        public Client(string target)
+        public Client(string target, ChannelCredentials credentials = null)
         {
-            _Channel = new Channel(target, ChannelCredentials.Insecure);
+            _Channel = new Channel(target, credentials ?? ChannelCredentials.Insecure);
             InitClient();
         }
 
