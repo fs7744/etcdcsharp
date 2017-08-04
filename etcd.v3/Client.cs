@@ -1,5 +1,4 @@
-﻿using Etcdserverpb;
-using Grpc.Core;
+﻿using Grpc.Core;
 using System.Threading.Tasks;
 using static Etcdserverpb.Auth;
 using static Etcdserverpb.Cluster;
@@ -25,18 +24,14 @@ namespace ETCD.V3
         {
             _Channel = new Channel(target, ChannelCredentials.Insecure);
             InitClient();
-            Authebtucate(user, password);
+            NewToken(user, password);
         }
 
-        public void Authebtucate(string user, string password)
+        public void NewToken(string user, string password)
         {
             if (!string.IsNullOrWhiteSpace(user))
             {
-                var res = Auth.Authenticate(new AuthenticateRequest()
-                {
-                    Name = user,
-                    Password = password
-                });
+                var res = this.Authebtucate(user, password);
                 var metadata = new Metadata
                 {
                     new Metadata.Entry(Constants.Token, res.Token)

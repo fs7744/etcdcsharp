@@ -330,7 +330,7 @@ namespace ETCD.V3
                 Perm = new Permission()
                 {
                     Key = key,
-                    RangeEnd = rangeEnd == null ? key.ToPrefixEnd() : rangeEnd,
+                    RangeEnd = rangeEnd ?? key.ToPrefixEnd(),
                     PermType = permType
                 }
             };
@@ -375,7 +375,7 @@ namespace ETCD.V3
             {
                 Role = role,
                 Key = key,
-                RangeEnd = rangeEnd == null ? ByteString.CopyFromUtf8(key).ToPrefixEnd().ToString() : rangeEnd
+                RangeEnd = rangeEnd ?? ByteString.CopyFromUtf8(key).ToPrefixEnd().ToString()
             };
         }
 
