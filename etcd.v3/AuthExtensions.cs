@@ -144,5 +144,32 @@ namespace ETCD.V3
         }
 
         #endregion UserDelete
+
+        #region UserChangePassword
+
+        public static AuthUserChangePasswordRequest CreateAuthUserChangePasswordRequest(this Client client,
+            string name, string password)
+        {
+            return new AuthUserChangePasswordRequest()
+            {
+                Name = name,
+                Password = password
+            };
+        }
+
+        public static AuthUserChangePasswordResponse UserChangePassword(this Client client, string name, string password)
+        {
+            var request = client.CreateAuthUserChangePasswordRequest(name, password);
+            return client.Auth.UserChangePassword(request, client.CallToken);
+        }
+
+        public static AsyncUnaryCall<AuthUserChangePasswordResponse> UserChangePasswordAsync(
+            this Client client, string name, string password)
+        {
+            var request = client.CreateAuthUserChangePasswordRequest(name, password);
+            return client.Auth.UserChangePasswordAsync(request, client.CallToken);
+        }
+
+        #endregion UserChangePassword
     }
 }
