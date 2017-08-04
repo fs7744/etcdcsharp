@@ -120,5 +120,29 @@ namespace ETCD.V3
         }
 
         #endregion UserList
+
+        #region UserDelete
+
+        public static AuthUserDeleteRequest CreateAuthUserDeleteRequest(this Client client, string name)
+        {
+            return new AuthUserDeleteRequest()
+            {
+                Name = name
+            };
+        }
+
+        public static AuthUserDeleteResponse UserDelete(this Client client, string name)
+        {
+            var request = client.CreateAuthUserDeleteRequest(name);
+            return client.Auth.UserDelete(request, client.CallToken);
+        }
+
+        public static AsyncUnaryCall<AuthUserDeleteResponse> UserDeleteAsync(this Client client, string name)
+        {
+            var request = client.CreateAuthUserDeleteRequest(name);
+            return client.Auth.UserDeleteAsync(request, client.CallToken);
+        }
+
+        #endregion UserDelete
     }
 }
