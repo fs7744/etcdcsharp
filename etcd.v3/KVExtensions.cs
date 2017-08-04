@@ -7,6 +7,15 @@ namespace ETCD.V3
 {
     public static class KVExtensions
     {
+        /// <summary>
+        /// range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.
+        /// </summary>
+        /// <param name="byteString">ByteString to range_end.</param>
+        /// <returns>range_end.</returns>
         public static ByteString ToPrefixEnd(this ByteString byteString)
         {
             byte[] endKey = byteString.ToByteArray();
@@ -232,6 +241,34 @@ namespace ETCD.V3
                 maxModRevision, minCreateRevision, maxCreateRevision);
         }
 
+        /// <summary>
+        /// Range gets the keys in the range from the key-value store.
+        /// </summary>
+        /// <param name="key">key is the first key for the range. If range_end is not given, the request only looks up key.</param>
+        /// <param name="limit">Defualt value is 0. limit is a limit on the number of keys returned for the request. When limit is set to 0,
+        /// it is treated as no limit.</param>
+        /// <param name="revision">Defualt value is 0. revision is the point-in-time of the key-value store to use for the range.
+        /// If revision is less or equal to zero, the range is over the newest key-value store.
+        /// If the revision has been compacted, ErrCompacted is returned as a response.</param>
+        /// <param name="sortOrder">Defualt value is SortOrder.None. sort_order is the order for returned sorted results.</param>
+        /// <param name="sortTarget">Defualt value is SortTarget.Key. sort_target is the key-value field to use for sorting.</param>
+        /// <param name="serializable">Defualt value is false. serializable sets the range request to use serializable member-local reads.
+        /// Range requests are linearizable by default; linearizable requests have higher
+        /// latency and lower throughput than serializable requests but reflect the current
+        /// consensus of the cluster. For better performance, in exchange for possible stale reads,
+        /// a serializable range request is served locally without needing to reach consensus
+        /// with other nodes in the cluster.</param>
+        /// <param name="keysOnly">Defualt value is false. keys_only when set returns only the keys and not the values.</param>
+        /// <param name="countOnly">Defualt value is false. count_only when set returns only the count of the keys in the range.</param>
+        /// <param name="minModRevision">Defualt value is 0. min_mod_revision is the lower bound for returned key mod revisions; all keys with
+        /// lesser mod revisions will be filtered away.</param>
+        /// <param name="maxModRevision">Defualt value is 0. max_mod_revision is the upper bound for returned key mod revisions; all keys with
+        /// greater mod revisions will be filtered away.</param>
+        /// <param name="minCreateRevision">Defualt value is 0. min_create_revision is the lower bound for returned key create revisions; all keys with
+        /// lesser create trevisions will be filtered away.</param>
+        /// <param name="maxCreateRevision">Defualt value is 0. max_create_revision is the upper bound for returned key create revisions; all keys with
+        /// greater create revisions will be filtered away.</param>
+        /// <returns>The response received from the server.</returns>
         public static RangeResponse GetAll(this Client client, string key,
            long limit = 0, long revision = 0, SortOrder sortOrder = SortOrder.None,
            SortTarget sortTarget = SortTarget.Key, bool serializable = false,
@@ -243,6 +280,34 @@ namespace ETCD.V3
                 maxModRevision, minCreateRevision, maxCreateRevision);
         }
 
+        /// <summary>
+        /// Range gets the keys in the range from the key-value store.
+        /// </summary>
+        /// <param name="key">key is the first key for the range. If range_end is not given, the request only looks up key.</param>
+        /// <param name="limit">Defualt value is 0. limit is a limit on the number of keys returned for the request. When limit is set to 0,
+        /// it is treated as no limit.</param>
+        /// <param name="revision">Defualt value is 0. revision is the point-in-time of the key-value store to use for the range.
+        /// If revision is less or equal to zero, the range is over the newest key-value store.
+        /// If the revision has been compacted, ErrCompacted is returned as a response.</param>
+        /// <param name="sortOrder">Defualt value is SortOrder.None. sort_order is the order for returned sorted results.</param>
+        /// <param name="sortTarget">Defualt value is SortTarget.Key. sort_target is the key-value field to use for sorting.</param>
+        /// <param name="serializable">Defualt value is false. serializable sets the range request to use serializable member-local reads.
+        /// Range requests are linearizable by default; linearizable requests have higher
+        /// latency and lower throughput than serializable requests but reflect the current
+        /// consensus of the cluster. For better performance, in exchange for possible stale reads,
+        /// a serializable range request is served locally without needing to reach consensus
+        /// with other nodes in the cluster.</param>
+        /// <param name="keysOnly">Defualt value is false. keys_only when set returns only the keys and not the values.</param>
+        /// <param name="countOnly">Defualt value is false. count_only when set returns only the count of the keys in the range.</param>
+        /// <param name="minModRevision">Defualt value is 0. min_mod_revision is the lower bound for returned key mod revisions; all keys with
+        /// lesser mod revisions will be filtered away.</param>
+        /// <param name="maxModRevision">Defualt value is 0. max_mod_revision is the upper bound for returned key mod revisions; all keys with
+        /// greater mod revisions will be filtered away.</param>
+        /// <param name="minCreateRevision">Defualt value is 0. min_create_revision is the lower bound for returned key create revisions; all keys with
+        /// lesser create trevisions will be filtered away.</param>
+        /// <param name="maxCreateRevision">Defualt value is 0. max_create_revision is the upper bound for returned key create revisions; all keys with
+        /// greater create revisions will be filtered away.</param>
+        /// <returns>The response received from the server.</returns>
         public static RangeResponse GetAll(this Client client, ByteString key,
            long limit = 0, long revision = 0, SortOrder sortOrder = SortOrder.None,
            SortTarget sortTarget = SortTarget.Key, bool serializable = false,
@@ -254,6 +319,39 @@ namespace ETCD.V3
                 maxModRevision, minCreateRevision, maxCreateRevision);
         }
 
+        /// <summary>
+        /// Range gets the keys in the range from the key-value store.
+        /// </summary>
+        /// <param name="key">key is the first key for the range. If range_end is not given, the request only looks up key.</param>
+        /// <param name="rangeEnd">range_end is the upper bound on the requested range [key, range_end).
+        /// If range_end is '\0', the range is all keys >= key.
+        /// If range_end is key plus one (e.g., "aa"+1 == "ab", "a\xff"+1 == "b"),
+        /// then the range request gets all keys prefixed with key.
+        /// If both key and range_end are '\0', then the range request returns all keys.</param>
+        /// <param name="limit">Defualt value is 0. limit is a limit on the number of keys returned for the request. When limit is set to 0,
+        /// it is treated as no limit.</param>
+        /// <param name="revision">Defualt value is 0. revision is the point-in-time of the key-value store to use for the range.
+        /// If revision is less or equal to zero, the range is over the newest key-value store.
+        /// If the revision has been compacted, ErrCompacted is returned as a response.</param>
+        /// <param name="sortOrder">Defualt value is SortOrder.None. sort_order is the order for returned sorted results.</param>
+        /// <param name="sortTarget">Defualt value is SortTarget.Key. sort_target is the key-value field to use for sorting.</param>
+        /// <param name="serializable">Defualt value is false. serializable sets the range request to use serializable member-local reads.
+        /// Range requests are linearizable by default; linearizable requests have higher
+        /// latency and lower throughput than serializable requests but reflect the current
+        /// consensus of the cluster. For better performance, in exchange for possible stale reads,
+        /// a serializable range request is served locally without needing to reach consensus
+        /// with other nodes in the cluster.</param>
+        /// <param name="keysOnly">Defualt value is false. keys_only when set returns only the keys and not the values.</param>
+        /// <param name="countOnly">Defualt value is false. count_only when set returns only the count of the keys in the range.</param>
+        /// <param name="minModRevision">Defualt value is 0. min_mod_revision is the lower bound for returned key mod revisions; all keys with
+        /// lesser mod revisions will be filtered away.</param>
+        /// <param name="maxModRevision">Defualt value is 0. max_mod_revision is the upper bound for returned key mod revisions; all keys with
+        /// greater mod revisions will be filtered away.</param>
+        /// <param name="minCreateRevision">Defualt value is 0. min_create_revision is the lower bound for returned key create revisions; all keys with
+        /// lesser create trevisions will be filtered away.</param>
+        /// <param name="maxCreateRevision">Defualt value is 0. max_create_revision is the upper bound for returned key create revisions; all keys with
+        /// greater create revisions will be filtered away.</param>
+        /// <returns>The response received from the server.</returns>
         public static RangeResponse Range(this Client client, ByteString key, ByteString rangeEnd = null,
            long limit = 0, long revision = 0, SortOrder sortOrder = SortOrder.None,
            SortTarget sortTarget = SortTarget.Key, bool serializable = false,
@@ -266,6 +364,39 @@ namespace ETCD.V3
             return client.KV.Range(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// Range gets the keys in the range from the key-value store.
+        /// </summary>
+        /// <param name="key">key is the first key for the range. If range_end is not given, the request only looks up key.</param>
+        /// <param name="rangeEnd">range_end is the upper bound on the requested range [key, range_end).
+        /// If range_end is '\0', the range is all keys >= key.
+        /// If range_end is key plus one (e.g., "aa"+1 == "ab", "a\xff"+1 == "b"),
+        /// then the range request gets all keys prefixed with key.
+        /// If both key and range_end are '\0', then the range request returns all keys.</param>
+        /// <param name="limit">Defualt value is 0. limit is a limit on the number of keys returned for the request. When limit is set to 0,
+        /// it is treated as no limit.</param>
+        /// <param name="revision">Defualt value is 0. revision is the point-in-time of the key-value store to use for the range.
+        /// If revision is less or equal to zero, the range is over the newest key-value store.
+        /// If the revision has been compacted, ErrCompacted is returned as a response.</param>
+        /// <param name="sortOrder">Defualt value is SortOrder.None. sort_order is the order for returned sorted results.</param>
+        /// <param name="sortTarget">Defualt value is SortTarget.Key. sort_target is the key-value field to use for sorting.</param>
+        /// <param name="serializable">Defualt value is false. serializable sets the range request to use serializable member-local reads.
+        /// Range requests are linearizable by default; linearizable requests have higher
+        /// latency and lower throughput than serializable requests but reflect the current
+        /// consensus of the cluster. For better performance, in exchange for possible stale reads,
+        /// a serializable range request is served locally without needing to reach consensus
+        /// with other nodes in the cluster.</param>
+        /// <param name="keysOnly">Defualt value is false. keys_only when set returns only the keys and not the values.</param>
+        /// <param name="countOnly">Defualt value is false. count_only when set returns only the count of the keys in the range.</param>
+        /// <param name="minModRevision">Defualt value is 0. min_mod_revision is the lower bound for returned key mod revisions; all keys with
+        /// lesser mod revisions will be filtered away.</param>
+        /// <param name="maxModRevision">Defualt value is 0. max_mod_revision is the upper bound for returned key mod revisions; all keys with
+        /// greater mod revisions will be filtered away.</param>
+        /// <param name="minCreateRevision">Defualt value is 0. min_create_revision is the lower bound for returned key create revisions; all keys with
+        /// lesser create trevisions will be filtered away.</param>
+        /// <param name="maxCreateRevision">Defualt value is 0. max_create_revision is the upper bound for returned key create revisions; all keys with
+        /// greater create revisions will be filtered away.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<RangeResponse> RangeAsync(this Client client, string key, string rangeEnd = null,
            long limit = 0, long revision = 0, SortOrder sortOrder = SortOrder.None,
            SortTarget sortTarget = SortTarget.Key, bool serializable = false,
@@ -278,6 +409,39 @@ namespace ETCD.V3
                 maxModRevision, minCreateRevision, maxCreateRevision);
         }
 
+        /// <summary>
+        /// Range gets the keys in the range from the key-value store.
+        /// </summary>
+        /// <param name="key">key is the first key for the range. If range_end is not given, the request only looks up key.</param>
+        /// <param name="rangeEnd">range_end is the upper bound on the requested range [key, range_end).
+        /// If range_end is '\0', the range is all keys >= key.
+        /// If range_end is key plus one (e.g., "aa"+1 == "ab", "a\xff"+1 == "b"),
+        /// then the range request gets all keys prefixed with key.
+        /// If both key and range_end are '\0', then the range request returns all keys.</param>
+        /// <param name="limit">Defualt value is 0. limit is a limit on the number of keys returned for the request. When limit is set to 0,
+        /// it is treated as no limit.</param>
+        /// <param name="revision">Defualt value is 0. revision is the point-in-time of the key-value store to use for the range.
+        /// If revision is less or equal to zero, the range is over the newest key-value store.
+        /// If the revision has been compacted, ErrCompacted is returned as a response.</param>
+        /// <param name="sortOrder">Defualt value is SortOrder.None. sort_order is the order for returned sorted results.</param>
+        /// <param name="sortTarget">Defualt value is SortTarget.Key. sort_target is the key-value field to use for sorting.</param>
+        /// <param name="serializable">Defualt value is false. serializable sets the range request to use serializable member-local reads.
+        /// Range requests are linearizable by default; linearizable requests have higher
+        /// latency and lower throughput than serializable requests but reflect the current
+        /// consensus of the cluster. For better performance, in exchange for possible stale reads,
+        /// a serializable range request is served locally without needing to reach consensus
+        /// with other nodes in the cluster.</param>
+        /// <param name="keysOnly">Defualt value is false. keys_only when set returns only the keys and not the values.</param>
+        /// <param name="countOnly">Defualt value is false. count_only when set returns only the count of the keys in the range.</param>
+        /// <param name="minModRevision">Defualt value is 0. min_mod_revision is the lower bound for returned key mod revisions; all keys with
+        /// lesser mod revisions will be filtered away.</param>
+        /// <param name="maxModRevision">Defualt value is 0. max_mod_revision is the upper bound for returned key mod revisions; all keys with
+        /// greater mod revisions will be filtered away.</param>
+        /// <param name="minCreateRevision">Defualt value is 0. min_create_revision is the lower bound for returned key create revisions; all keys with
+        /// lesser create trevisions will be filtered away.</param>
+        /// <param name="maxCreateRevision">Defualt value is 0. max_create_revision is the upper bound for returned key create revisions; all keys with
+        /// greater create revisions will be filtered away.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<RangeResponse> RangeAsync(this Client client, ByteString key, ByteString rangeEnd = null,
            long limit = 0, long revision = 0, SortOrder sortOrder = SortOrder.None,
            SortTarget sortTarget = SortTarget.Key, bool serializable = false,
@@ -290,6 +454,34 @@ namespace ETCD.V3
             return client.KV.RangeAsync(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// Range gets the keys in the range from the key-value store.
+        /// </summary>
+        /// <param name="key">key is the first key for the range. If range_end is not given, the request only looks up key.</param>
+        /// <param name="limit">Defualt value is 0. limit is a limit on the number of keys returned for the request. When limit is set to 0,
+        /// it is treated as no limit.</param>
+        /// <param name="revision">Defualt value is 0. revision is the point-in-time of the key-value store to use for the range.
+        /// If revision is less or equal to zero, the range is over the newest key-value store.
+        /// If the revision has been compacted, ErrCompacted is returned as a response.</param>
+        /// <param name="sortOrder">Defualt value is SortOrder.None. sort_order is the order for returned sorted results.</param>
+        /// <param name="sortTarget">Defualt value is SortTarget.Key. sort_target is the key-value field to use for sorting.</param>
+        /// <param name="serializable">Defualt value is false. serializable sets the range request to use serializable member-local reads.
+        /// Range requests are linearizable by default; linearizable requests have higher
+        /// latency and lower throughput than serializable requests but reflect the current
+        /// consensus of the cluster. For better performance, in exchange for possible stale reads,
+        /// a serializable range request is served locally without needing to reach consensus
+        /// with other nodes in the cluster.</param>
+        /// <param name="keysOnly">Defualt value is false. keys_only when set returns only the keys and not the values.</param>
+        /// <param name="countOnly">Defualt value is false. count_only when set returns only the count of the keys in the range.</param>
+        /// <param name="minModRevision">Defualt value is 0. min_mod_revision is the lower bound for returned key mod revisions; all keys with
+        /// lesser mod revisions will be filtered away.</param>
+        /// <param name="maxModRevision">Defualt value is 0. max_mod_revision is the upper bound for returned key mod revisions; all keys with
+        /// greater mod revisions will be filtered away.</param>
+        /// <param name="minCreateRevision">Defualt value is 0. min_create_revision is the lower bound for returned key create revisions; all keys with
+        /// lesser create trevisions will be filtered away.</param>
+        /// <param name="maxCreateRevision">Defualt value is 0. max_create_revision is the upper bound for returned key create revisions; all keys with
+        /// greater create revisions will be filtered away.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<RangeResponse> GetAllAsync(this Client client, string key,
           long limit = 0, long revision = 0, SortOrder sortOrder = SortOrder.None,
           SortTarget sortTarget = SortTarget.Key, bool serializable = false,
@@ -301,6 +493,34 @@ namespace ETCD.V3
                 maxModRevision, minCreateRevision, maxCreateRevision);
         }
 
+        /// <summary>
+        /// Range gets the keys in the range from the key-value store.
+        /// </summary>
+        /// <param name="key">key is the first key for the range. If range_end is not given, the request only looks up key.</param>
+        /// <param name="limit">Defualt value is 0. limit is a limit on the number of keys returned for the request. When limit is set to 0,
+        /// it is treated as no limit.</param>
+        /// <param name="revision">Defualt value is 0. revision is the point-in-time of the key-value store to use for the range.
+        /// If revision is less or equal to zero, the range is over the newest key-value store.
+        /// If the revision has been compacted, ErrCompacted is returned as a response.</param>
+        /// <param name="sortOrder">Defualt value is SortOrder.None. sort_order is the order for returned sorted results.</param>
+        /// <param name="sortTarget">Defualt value is SortTarget.Key. sort_target is the key-value field to use for sorting.</param>
+        /// <param name="serializable">Defualt value is false. serializable sets the range request to use serializable member-local reads.
+        /// Range requests are linearizable by default; linearizable requests have higher
+        /// latency and lower throughput than serializable requests but reflect the current
+        /// consensus of the cluster. For better performance, in exchange for possible stale reads,
+        /// a serializable range request is served locally without needing to reach consensus
+        /// with other nodes in the cluster.</param>
+        /// <param name="keysOnly">Defualt value is false. keys_only when set returns only the keys and not the values.</param>
+        /// <param name="countOnly">Defualt value is false. count_only when set returns only the count of the keys in the range.</param>
+        /// <param name="minModRevision">Defualt value is 0. min_mod_revision is the lower bound for returned key mod revisions; all keys with
+        /// lesser mod revisions will be filtered away.</param>
+        /// <param name="maxModRevision">Defualt value is 0. max_mod_revision is the upper bound for returned key mod revisions; all keys with
+        /// greater mod revisions will be filtered away.</param>
+        /// <param name="minCreateRevision">Defualt value is 0. min_create_revision is the lower bound for returned key create revisions; all keys with
+        /// lesser create trevisions will be filtered away.</param>
+        /// <param name="maxCreateRevision">Defualt value is 0. max_create_revision is the upper bound for returned key create revisions; all keys with
+        /// greater create revisions will be filtered away.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<RangeResponse> GetAllAsync(this Client client, ByteString key,
            long limit = 0, long revision = 0, SortOrder sortOrder = SortOrder.None,
            SortTarget sortTarget = SortTarget.Key, bool serializable = false,
@@ -316,6 +536,18 @@ namespace ETCD.V3
 
         #region DeleteRange
 
+        /// <summary>
+        /// Create DeleteRangeRequest.
+        /// </summary>
+        /// <param name="key">key is the first key to delete in the range.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <param name="prevKv">If prev_kv is set, etcd gets the previous key-value pairs before deleting it.
+        /// The previous key-value pairs will be returned in the delete response.</returns>
+        /// <returns>The response received from the server.</returns>
         public static DeleteRangeRequest CreateDeleteRangeRequest(this Client client, ByteString key, ByteString rangeEnd = null,
             bool prevKv = false)
         {
@@ -327,6 +559,20 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// DeleteRange deletes the given range from the key-value store.
+        /// A delete request increments the revision of the key-value store
+        /// and generates a delete event in the event history for every deleted key.
+        /// </summary>
+        /// <param name="key">key is the first key to delete in the range.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <param name="prevKv">If prev_kv is set, etcd gets the previous key-value pairs before deleting it.
+        /// The previous key-value pairs will be returned in the delete response.</returns>
+        /// <returns>The response received from the server.</returns>
         public static DeleteRangeResponse DeleteRange(this Client client, string key, string rangeEnd = null,
            bool prevKv = false)
         {
@@ -334,6 +580,20 @@ namespace ETCD.V3
                 rangeEnd == null ? null : ByteString.CopyFromUtf8(rangeEnd), prevKv);
         }
 
+        /// <summary>
+        /// DeleteRange deletes the given range from the key-value store.
+        /// A delete request increments the revision of the key-value store
+        /// and generates a delete event in the event history for every deleted key.
+        /// </summary>
+        /// <param name="key">key is the first key to delete in the range.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <param name="prevKv">If prev_kv is set, etcd gets the previous key-value pairs before deleting it.
+        /// The previous key-value pairs will be returned in the delete response.</returns>
+        /// <returns>The response received from the server.</returns>
         public static DeleteRangeResponse DeleteRange(this Client client, ByteString key, ByteString rangeEnd = null,
            bool prevKv = false)
         {
@@ -341,16 +601,48 @@ namespace ETCD.V3
             return client.KV.DeleteRange(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// DeleteRange deletes the given range from the key-value store.
+        /// A delete request increments the revision of the key-value store
+        /// and generates a delete event in the event history for every deleted key.
+        /// </summary>
+        /// <param name="key">key is the first key to delete in the range.</param>
+        /// <param name="prevKv">If prev_kv is set, etcd gets the previous key-value pairs before deleting it.
+        /// The previous key-value pairs will be returned in the delete response.</returns>
+        /// <returns>The response received from the server.</returns>
         public static DeleteRangeResponse DeleteAll(this Client client, string key, bool prevKv = false)
         {
             return client.DeleteAll(ByteString.CopyFromUtf8(key), prevKv);
         }
 
+        /// <summary>
+        /// DeleteRange deletes the given range from the key-value store.
+        /// A delete request increments the revision of the key-value store
+        /// and generates a delete event in the event history for every deleted key.
+        /// </summary>
+        /// <param name="key">key is the first key to delete in the range.</param>
+        /// <param name="prevKv">If prev_kv is set, etcd gets the previous key-value pairs before deleting it.
+        /// The previous key-value pairs will be returned in the delete response.</returns>
+        /// <returns>The response received from the server.</returns>
         public static DeleteRangeResponse DeleteAll(this Client client, ByteString key, bool prevKv = false)
         {
             return client.DeleteRange(key, Constants.NullKey, prevKv);
         }
 
+        /// <summary>
+        /// DeleteRange deletes the given range from the key-value store.
+        /// A delete request increments the revision of the key-value store
+        /// and generates a delete event in the event history for every deleted key.
+        /// </summary>
+        /// <param name="key">key is the first key to delete in the range.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <param name="prevKv">If prev_kv is set, etcd gets the previous key-value pairs before deleting it.
+        /// The previous key-value pairs will be returned in the delete response.</returns>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<DeleteRangeResponse> DeleteRangeAsync(this Client client, string key, string rangeEnd = null,
            bool prevKv = false)
         {
@@ -358,6 +650,20 @@ namespace ETCD.V3
                 rangeEnd == null ? null : ByteString.CopyFromUtf8(rangeEnd), prevKv);
         }
 
+        /// <summary>
+        /// DeleteRange deletes the given range from the key-value store.
+        /// A delete request increments the revision of the key-value store
+        /// and generates a delete event in the event history for every deleted key.
+        /// </summary>
+        /// <param name="key">key is the first key to delete in the range.</param>
+        /// <param name="rangeEnd">range_end is the key following the last key to delete for the range [key, range_end).
+        /// If range_end is not given, the range is defined to contain only the key argument.
+        /// If range_end is one bit larger than the given key, then the range is all the keys
+        /// with the prefix (the given key).
+        /// If range_end is '\0', the range is all keys greater than or equal to the key argument.</param>
+        /// <param name="prevKv">If prev_kv is set, etcd gets the previous key-value pairs before deleting it.
+        /// The previous key-value pairs will be returned in the delete response.</returns>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<DeleteRangeResponse> DeleteRangeAsync(this Client client, ByteString key, ByteString rangeEnd = null,
            bool prevKv = false)
         {
@@ -365,11 +671,29 @@ namespace ETCD.V3
             return client.KV.DeleteRangeAsync(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// DeleteRange deletes the given range from the key-value store.
+        /// A delete request increments the revision of the key-value store
+        /// and generates a delete event in the event history for every deleted key.
+        /// </summary>
+        /// <param name="key">key is the first key to delete in the range.</param>
+        /// <param name="prevKv">If prev_kv is set, etcd gets the previous key-value pairs before deleting it.
+        /// The previous key-value pairs will be returned in the delete response.</returns>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<DeleteRangeResponse> DeleteAllAsync(this Client client, string key, bool prevKv = false)
         {
             return client.DeleteAllAsync(ByteString.CopyFromUtf8(key), prevKv);
         }
 
+        /// <summary>
+        /// DeleteRange deletes the given range from the key-value store.
+        /// A delete request increments the revision of the key-value store
+        /// and generates a delete event in the event history for every deleted key.
+        /// </summary>
+        /// <param name="key">key is the first key to delete in the range.</param>
+        /// <param name="prevKv">If prev_kv is set, etcd gets the previous key-value pairs before deleting it.
+        /// The previous key-value pairs will be returned in the delete response.</returns>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<DeleteRangeResponse> DeleteAllAsync(this Client client, ByteString key, bool prevKv = false)
         {
             return client.DeleteRangeAsync(key, Constants.NullKey, prevKv);
@@ -379,6 +703,12 @@ namespace ETCD.V3
 
         #region Compact
 
+        /// <summary>
+        /// Create CompactionRequest
+        /// </summary>
+        /// <param name="revision">The request to send to the server.</param>
+        /// <param name="physical">The initial metadata to send with the call. This parameter is optional.</param>
+        /// <returns>The response received from the server.</returns>
         public static CompactionRequest CreateCompactionRequest(this Client client, long revision, bool physical = false)
         {
             return new CompactionRequest()
@@ -388,6 +718,14 @@ namespace ETCD.V3
             };
         }
 
+        /// <summary>
+        /// Compact compacts the event history in the etcd key-value store. The key-value
+        /// store should be periodically compacted or the event history will continue to grow
+        /// indefinitely.
+        /// </summary>
+        /// <param name="revision">The request to send to the server.</param>
+        /// <param name="physical">The initial metadata to send with the call. This parameter is optional.</param>
+        /// <returns>The response received from the server.</returns>
         public static CompactionResponse Compact(this Client client, long revision, bool physical = false,
           bool prevKv = false)
         {
@@ -395,6 +733,14 @@ namespace ETCD.V3
             return client.KV.Compact(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// Compact compacts the event history in the etcd key-value store. The key-value
+        /// store should be periodically compacted or the event history will continue to grow
+        /// indefinitely.
+        /// </summary>
+        /// <param name="revision">The request to send to the server.</param>
+        /// <param name="physical">The initial metadata to send with the call. This parameter is optional.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<CompactionResponse> CompactAsync(this Client client, long revision, bool physical = false,
           bool prevKv = false)
         {
@@ -406,11 +752,27 @@ namespace ETCD.V3
 
         #region Txn
 
+        /// <summary>
+        /// Txn processes multiple requests in a single transaction.
+        /// A txn request increments the revision of the key-value store
+        /// and generates events with the same revision for every completed request.
+        /// It is not allowed to modify the same key several times within one txn.
+        /// </summary>
+        /// <param name="request">The request to send to the server.</param>
+        /// <returns>The response received from the server.</returns>
         public static TxnResponse Txn(this Client client, TxnRequest request)
         {
             return client.KV.Txn(request, client.AuthToken);
         }
 
+        /// <summary>
+        /// Txn processes multiple requests in a single transaction.
+        /// A txn request increments the revision of the key-value store
+        /// and generates events with the same revision for every completed request.
+        /// It is not allowed to modify the same key several times within one txn.
+        /// </summary>
+        /// <param name="request">The request to send to the server.</param>
+        /// <returns>The call object.</returns>
         public static AsyncUnaryCall<TxnResponse> TxnAsync(this Client client, TxnRequest request)
         {
             return client.KV.TxnAsync(request, client.AuthToken);
