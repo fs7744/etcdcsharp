@@ -251,3 +251,13 @@ paket-files/
 # JetBrains Rider
 .idea*
 *.sln.iml
+
+###############
+#    folder   #
+###############
+/**/DROP/
+/**/TEMP/
+/**/packages/
+/**/bin/
+/**/obj/
+_site
