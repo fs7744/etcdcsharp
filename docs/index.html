@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>This is the HOMEPAGE. </title>
+    <title>ETCD V3 Client </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="This is the HOMEPAGE. ">
+    <meta name="title" content="ETCD V3 Client ">
     <meta name="generator" content="docfx 2.22.2.0">
     
     <link rel="shortcut icon" href="favicon.ico">
@@ -67,13 +67,35 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="this-is-the-homepage">This is the <strong>HOMEPAGE</strong>.</h1>
+<h1 id="etcd-v3-client">ETCD V3 Client</h1>
 
-<p>Refer to <a href="http://daringfireball.net/projects/markdown/">Markdown</a> for how to write markdown files.</p>
-<h2 id="quick-start-notes">Quick Start Notes:</h2>
-<ol>
-<li>Add images to the <em>images</em> folder if the file is referencing an image.</li>
-</ol>
+<p>base code all Generate by grpc tools.</p>
+<h2 id="quick-start">Quick start</h2>
+<h3 id="install-package">Install package</h3>
+<ul>
+<li>Package Manager</li>
+</ul>
+<pre><code>Install-Package etcd.v3 -Version 0.0.1.3
+</code></pre><ul>
+<li>.NET CLI</li>
+</ul>
+<pre><code>dotnet add package etcd.v3 --version 0.0.1.3
+</code></pre><h3 id="simple-use-example">Simple use example</h3>
+<pre><code class="lang-csharp">var client = new Client(&quot;127.0.0.1:2379&quot;);
+//client.NewAuthToken(&quot;root&quot;, &quot;123&quot;); // if etcd has auth enable, please use user and pwd to get auth
+client.Put(&quot;key&quot;, &quot;value&quot;);  // put key/vale to etcd
+
+// get value 
+var res = client.Range(&quot;key&quot;);
+Assert.Equal(1, res.Count);
+Assert.Equal(1, res.Kvs.Count);
+Assert.Equal(&quot;value&quot;, res.Kvs[0].Value.ToStringUtf8());
+Assert.False(res.More);
+</code></pre><h3 id="api-doc">api doc</h3>
+<p>Main api doc please see </p>
+<p><a href="https://fs7744.github.io/etcdcsharp/api/ETCD.V3.html">https://fs7744.github.io/etcdcsharp/api/ETCD.V3.html</a></p>
+<p>All api doc ( include code generate by grpc tool ) please see </p>
+<p><a href="https://fs7744.github.io/etcdcsharp/api/index.html">https://fs7744.github.io/etcdcsharp/api/index.html</a></p>
 </article>
           </div>
           
