@@ -1,0 +1,1705 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/code/dotnetcore/etcdcsharp1/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Authpb.AuthReflection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Authpb.AuthReflection.html",
+          "hash": "aoNZ7lkOtLoGEX65QznWDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Authpb.Permission.Types.Type.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Authpb.Permission.Types.Type.html",
+          "hash": "fs/2IYbJvPzrGlLRYqcRBg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Authpb.Permission.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Authpb.Permission.Types.html",
+          "hash": "Zgv3ECM4EHP6w+/5li7BvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Authpb.Permission.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Authpb.Permission.html",
+          "hash": "ZIcwCH4adIt/2LlzEMFeig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Authpb.Role.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Authpb.Role.html",
+          "hash": "zUHLmshxQkZ2oTun/rQQFw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Authpb.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Authpb.User.html",
+          "hash": "NUDJsDaRmqoYGy09DPDkNg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Authpb.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Authpb.html",
+          "hash": "egLW5ROVTqIGk5jEB5ggIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ETCD.V3.AuthExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ETCD.V3.AuthExtensions.html",
+          "hash": "UY+d1CRLsjp04SnxZ2+TCg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ETCD.V3.Client.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ETCD.V3.Client.html",
+          "hash": "INWiYqDwn/XxUYS/GA5HpQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ETCD.V3.ClusterExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ETCD.V3.ClusterExtensions.html",
+          "hash": "rUX5bDURxY56g1KQxy5ITg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ETCD.V3.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ETCD.V3.Constants.html",
+          "hash": "U+hNPouUme2m859zCiiv4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ETCD.V3.KVExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ETCD.V3.KVExtensions.html",
+          "hash": "MrZEiqKTpQxRLffYiJN7lA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ETCD.V3.LeaseExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ETCD.V3.LeaseExtensions.html",
+          "hash": "ejM/hXmASnj87btOvNIC0g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ETCD.V3.MaintenanceExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ETCD.V3.MaintenanceExtensions.html",
+          "hash": "CFzMapnb+IBKAPwx3A2etg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ETCD.V3.WatchExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ETCD.V3.WatchExtensions.html",
+          "hash": "aUygC5PG3w7K3bqEl79BAg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ETCD.V3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ETCD.V3.html",
+          "hash": "vcE3vws1+XNRyn8cn/Sw7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AlarmMember.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AlarmMember.html",
+          "hash": "lJHJk7kTcHbyLAmuS0IZnA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AlarmRequest.Types.AlarmAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AlarmRequest.Types.AlarmAction.html",
+          "hash": "rhVg5OiQtC7wwEQcqRJpTQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AlarmRequest.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AlarmRequest.Types.html",
+          "hash": "NGBrXKPRCaqN6we+92JOJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AlarmRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AlarmRequest.html",
+          "hash": "2HPwVzphUuHrWhgQRJkN2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AlarmResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AlarmResponse.html",
+          "hash": "sazIM8y+0TuWE9LBJhUAAA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AlarmType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AlarmType.html",
+          "hash": "fpMXSVIA7foZ+z5UihMxGg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Auth.AuthBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Auth.AuthBase.html",
+          "hash": "vTVmgNMvlqpub5PR6H1fOw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Auth.AuthClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Auth.AuthClient.html",
+          "hash": "P/Rzv8UFIxvnUealhjKZqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Auth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Auth.html",
+          "hash": "wP7ykZcfhEqIkGV2l5vVTQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthDisableRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthDisableRequest.html",
+          "hash": "Qy9K3fp+uxFYmfen27j4uw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthDisableResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthDisableResponse.html",
+          "hash": "glOcRJJw3Xe9hG1ZMsiA6w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthEnableRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthEnableRequest.html",
+          "hash": "MfOMPoMSwqYD4Lr+ILkN9g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthEnableResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthEnableResponse.html",
+          "hash": "HTyUY1wYKMlIZ6zpY+nrKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleAddRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleAddRequest.html",
+          "hash": "rtpRL01na4KpQpz9OcTL9g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleAddResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleAddResponse.html",
+          "hash": "W6etMteeY256JAzgJZId7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleDeleteRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleDeleteRequest.html",
+          "hash": "ypkdM2TbZtdeEGWd+Ck5Hg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleDeleteResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleDeleteResponse.html",
+          "hash": "P9qJDnrBM6PwLCkjfON7aA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleGetRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleGetRequest.html",
+          "hash": "Cf6SLQ8QC/O6bsEWOCYmNA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleGetResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleGetResponse.html",
+          "hash": "aA0mgPd8ohtBbNqSbYzobg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleGrantPermissionRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleGrantPermissionRequest.html",
+          "hash": "FloUucxDfYfC8Ue67f5WZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleGrantPermissionResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleGrantPermissionResponse.html",
+          "hash": "avkcizX1TSQodFpPuhOzBQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleListRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleListRequest.html",
+          "hash": "eHg4bpMbsbmqAA48MWKRgw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleListResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleListResponse.html",
+          "hash": "D/yE2vZ32dXfyIoSyyFKGw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleRevokePermissionRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleRevokePermissionRequest.html",
+          "hash": "uFswmg411eKqwMBZETKP3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthRoleRevokePermissionResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthRoleRevokePermissionResponse.html",
+          "hash": "hnhhHUXuFTUp1SZjfSpSyQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserAddRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserAddRequest.html",
+          "hash": "TGTZj96meFe+0Ii9PTEWsQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserAddResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserAddResponse.html",
+          "hash": "OFxDHW12jw5spYDdcSH7Dw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserChangePasswordRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserChangePasswordRequest.html",
+          "hash": "m5XCG/vFu7/D/q8YPQgOYw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserChangePasswordResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserChangePasswordResponse.html",
+          "hash": "Nc9JVAOTROCKPEQb/PtdkQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserDeleteRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserDeleteRequest.html",
+          "hash": "oVFNvpxx8KJvWQucQqLXJQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserDeleteResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserDeleteResponse.html",
+          "hash": "qrCz3w2Y3fUr8cgR1uvMiA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserGetRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserGetRequest.html",
+          "hash": "8785HRdr6D076ALbhcimxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserGetResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserGetResponse.html",
+          "hash": "FY9Ul8wfS/9NIDl425VRiA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserGrantRoleRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserGrantRoleRequest.html",
+          "hash": "6u7+tS3+iTPIcfhe3CoKWQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserGrantRoleResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserGrantRoleResponse.html",
+          "hash": "0CIEHl54Agq1AlOKXKZ2mg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserListRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserListRequest.html",
+          "hash": "kOxJa/JSGlv9z1HOrrV2Ew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserListResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserListResponse.html",
+          "hash": "YYDSm+y7qP0ckJmwBCUZdg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserRevokeRoleRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserRevokeRoleRequest.html",
+          "hash": "dhS/rui3jNhT9pg1EWmeEA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthUserRevokeRoleResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthUserRevokeRoleResponse.html",
+          "hash": "MV3cQ3IT/jaVepyOCqAd7w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthenticateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthenticateRequest.html",
+          "hash": "1NLVP4mIwkjV2wVQ4yX5Iw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.AuthenticateResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.AuthenticateResponse.html",
+          "hash": "SfllisuEw9CHQvnr3PY7uw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Cluster.ClusterBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Cluster.ClusterBase.html",
+          "hash": "6kRueiHZSxQCZ6iRxK2UPw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Cluster.ClusterClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Cluster.ClusterClient.html",
+          "hash": "BNw/kFHqF6a87DlpoPb7SA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Cluster.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Cluster.html",
+          "hash": "Dt1TMwI1DjGfidfyPQzsgw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.CompactionRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.CompactionRequest.html",
+          "hash": "JN26SP2A+VNKt8oWai7JFg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.CompactionResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.CompactionResponse.html",
+          "hash": "ufnLq3dWg+EStbhiNq5nTQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Compare.TargetUnionOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Compare.TargetUnionOneofCase.html",
+          "hash": "s94wQI2MhUx9lFusf5EL/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Compare.Types.CompareResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Compare.Types.CompareResult.html",
+          "hash": "sZRCrGrHVJu4MT3YBXdmKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Compare.Types.CompareTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Compare.Types.CompareTarget.html",
+          "hash": "dW10a/uySn8EliqFxIR2wQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Compare.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Compare.Types.html",
+          "hash": "PHM0/TtJkWvIwl5UeRjRRw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Compare.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Compare.html",
+          "hash": "TQ+8tCdyIIQAFhK79ZvidQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.DefragmentRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.DefragmentRequest.html",
+          "hash": "koKKvIJHV++YT9u0TLC7+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.DefragmentResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.DefragmentResponse.html",
+          "hash": "DzTiFmb8aywmb7cOtG1fCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.DeleteRangeRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.DeleteRangeRequest.html",
+          "hash": "7Cfz3XrNO+ujp/rSdy1u7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.DeleteRangeResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.DeleteRangeResponse.html",
+          "hash": "HLrrI/jotWCnNDEodz1ZTg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.HashRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.HashRequest.html",
+          "hash": "AmhYsEY8aq36Ip4clOiLLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.HashResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.HashResponse.html",
+          "hash": "/vcW62mKay0wIINF7+Mtzw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.KV.KVBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.KV.KVBase.html",
+          "hash": "0kYjgpVdXao3T27Sgjhu4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.KV.KVClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.KV.KVClient.html",
+          "hash": "Zr8RBCKbh1YiofntcZFuuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.KV.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.KV.html",
+          "hash": "4AowHqzpT6ooH8i9urycFQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Lease.LeaseBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Lease.LeaseBase.html",
+          "hash": "0xsi7xdMC3FN2zgSbSeb6A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Lease.LeaseClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Lease.LeaseClient.html",
+          "hash": "xOG+TfIFdxt7TbGhjhk6sQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Lease.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Lease.html",
+          "hash": "dYnb0hh/4eMUqfRptxeQ0g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.LeaseGrantRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.LeaseGrantRequest.html",
+          "hash": "X4fQYUDL8mvsXXJqxyypNQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.LeaseGrantResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.LeaseGrantResponse.html",
+          "hash": "bYwct3ZGuJUaNze9xrtIDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.LeaseKeepAliveRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.LeaseKeepAliveRequest.html",
+          "hash": "midCoKRac2fmtg4/vYBmfg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.LeaseKeepAliveResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.LeaseKeepAliveResponse.html",
+          "hash": "ePW5A1BT4WtyoQoIO9JkpQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.LeaseRevokeRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.LeaseRevokeRequest.html",
+          "hash": "/qlC5YFzxvLuoiqq6+o4dw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.LeaseRevokeResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.LeaseRevokeResponse.html",
+          "hash": "9O9Xey5QrsYk4V7YX2lNtw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.LeaseTimeToLiveRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.LeaseTimeToLiveRequest.html",
+          "hash": "kOC4RZcNjnrS6qn4wNWX2A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.LeaseTimeToLiveResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.LeaseTimeToLiveResponse.html",
+          "hash": "1dfAe1IyPvnaEHzCYrJcyQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Maintenance.MaintenanceBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Maintenance.MaintenanceBase.html",
+          "hash": "awFwEV5O+zQWi2vC6XKPNA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Maintenance.MaintenanceClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Maintenance.MaintenanceClient.html",
+          "hash": "fhrgnybx4al22TZdB+P5zg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Maintenance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Maintenance.html",
+          "hash": "+o5xjC2253ESlm6WMnjQxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Member.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Member.html",
+          "hash": "Gsb6ePRtxu989E/TYRgsEQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.MemberAddRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.MemberAddRequest.html",
+          "hash": "BzM/Oyi++XfLYrJYdApdeQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.MemberAddResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.MemberAddResponse.html",
+          "hash": "UPmvb4bsqLAb0wGzbPXdgg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.MemberListRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.MemberListRequest.html",
+          "hash": "WFJem9Eh5WoV5LQsUgkaDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.MemberListResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.MemberListResponse.html",
+          "hash": "6MZlwD8srfKvzB44La4ceg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.MemberRemoveRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.MemberRemoveRequest.html",
+          "hash": "XxRj/KadSBzjy5oHq9D4fA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.MemberRemoveResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.MemberRemoveResponse.html",
+          "hash": "VZsZeSkCmOmpJA9EviTDrQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.MemberUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.MemberUpdateRequest.html",
+          "hash": "e5R46KTAmYKGdmmMOLxG3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.MemberUpdateResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.MemberUpdateResponse.html",
+          "hash": "W40AtzesedurtVuvDDkBNw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.PutRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.PutRequest.html",
+          "hash": "K1UWfP33t3DDgzIUgREjxA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.PutResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.PutResponse.html",
+          "hash": "ff9yHpyv5v9LYlrQg4rxRg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.RangeRequest.Types.SortOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.RangeRequest.Types.SortOrder.html",
+          "hash": "9SEf2NTXVn+gNzOwvi5D8g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.RangeRequest.Types.SortTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.RangeRequest.Types.SortTarget.html",
+          "hash": "t81wWpi0axPiB/V/3h5ybA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.RangeRequest.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.RangeRequest.Types.html",
+          "hash": "gtvsSEadwv6P6s/E49lNpA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.RangeRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.RangeRequest.html",
+          "hash": "8OGl80gfsozfiR8O/uYb5A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.RangeResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.RangeResponse.html",
+          "hash": "vgljbq+X/4TNWtu2Th8TRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.RequestOp.RequestOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.RequestOp.RequestOneofCase.html",
+          "hash": "ZcK+KuX0nJGKqyDqYpAfQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.RequestOp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.RequestOp.html",
+          "hash": "S1ILxfe2qnnR3V0FUqilpA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.ResponseHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.ResponseHeader.html",
+          "hash": "S48LUqgYd/EzdD1IweFAJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.ResponseOp.ResponseOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.ResponseOp.ResponseOneofCase.html",
+          "hash": "QHJByAso770WlkCfyAoBHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.ResponseOp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.ResponseOp.html",
+          "hash": "c7CRItqVVLwo3gOs5mI4mw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.RpcReflection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.RpcReflection.html",
+          "hash": "XbrgTw1MxfkBHiLisf34Hg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.SnapshotRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.SnapshotRequest.html",
+          "hash": "HMt36oDTrJg3RWus7epK6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.SnapshotResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.SnapshotResponse.html",
+          "hash": "PZjNXEgqrc0bBeFcGIpf+Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.StatusRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.StatusRequest.html",
+          "hash": "cY2GjGs57BIH2gaNukmCpA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.StatusResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.StatusResponse.html",
+          "hash": "I2isEbouA6w+Mmq5IDM3YQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.TxnRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.TxnRequest.html",
+          "hash": "sr9HcrxC6x+9DzMBWl+/UQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.TxnResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.TxnResponse.html",
+          "hash": "G5mhjMCVRiO9y/ld4/f2gQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Watch.WatchBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Watch.WatchBase.html",
+          "hash": "/z4WzRIuEBfN1tvaBy1v/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Watch.WatchClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Watch.WatchClient.html",
+          "hash": "J4zGdGHOfZutNb28MN7IYg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.Watch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.Watch.html",
+          "hash": "eR+ZE8eNwhbwFMl03U3mBA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.WatchCancelRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.WatchCancelRequest.html",
+          "hash": "zbSNjiuiACi7Wvc6xdQywA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.WatchCreateRequest.Types.FilterType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.WatchCreateRequest.Types.FilterType.html",
+          "hash": "HK9Q+cHa1x0EriDBuNBPlQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.WatchCreateRequest.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.WatchCreateRequest.Types.html",
+          "hash": "C1NieMYLFaXw+BMOv3h8WQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.WatchCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.WatchCreateRequest.html",
+          "hash": "+nNsOoO1PX4sZFuGJ6iuSQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.WatchRequest.RequestUnionOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.WatchRequest.RequestUnionOneofCase.html",
+          "hash": "T/91MY6F8Rd1cqhpdOKb8Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.WatchRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.WatchRequest.html",
+          "hash": "veulicmb5IAFAE9Fyc5PKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.WatchResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.WatchResponse.html",
+          "hash": "5+hcuPGvb5hCKyWjvd3hrA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Etcdserverpb.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcdserverpb.html",
+          "hash": "pxqeXaSvbR/ZlQno6A77lg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Mvccpb.Event.Types.EventType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Mvccpb.Event.Types.EventType.html",
+          "hash": "qio1H1jxpvt20duMJOLPxA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Mvccpb.Event.Types.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Mvccpb.Event.Types.html",
+          "hash": "C8Zo0CsjRa7+JxKzRa2lzA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Mvccpb.Event.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Mvccpb.Event.html",
+          "hash": "mIeE5yYVFYxLK/Komnl9NQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Mvccpb.KeyValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Mvccpb.KeyValue.html",
+          "hash": "k/xJZutzKpehJS9S65aKeg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Mvccpb.KvReflection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Mvccpb.KvReflection.html",
+          "hash": "ljy/AAfWY9g7hBtKwME+eA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Mvccpb.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Mvccpb.html",
+          "hash": "chg/xHw3u3VBeNnAkhfW+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "Rc4aQuGTsqQ7nb8u7aGMxQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "Bvfppode3CFcCCqfM597vg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "B9dZE5O6UIQpQAm22AnXCQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "RestApiDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {}
+}
