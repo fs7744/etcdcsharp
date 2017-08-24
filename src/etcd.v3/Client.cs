@@ -18,34 +18,37 @@ namespace ETCD.V3
     public class Client
     {
         private Channel _Channel;
+        private AuthCallInvoker authInvoker;
+
         /// <summary>
         /// Origin grpc etcd v3 Client for Auth
         /// </summary>
         public AuthClient Auth { get; private set; }
+
         /// <summary>
         /// Origin grpc etcd v3 Client for KV
         /// </summary>
         public KVClient KV { get; private set; }
+
         /// <summary>
         /// Origin grpc etcd v3 Client for Cluster
         /// </summary>
         public ClusterClient Cluster { get; private set; }
+
         /// <summary>
         /// Origin grpc etcd v3 Client for Maintenance
         /// </summary>
         public MaintenanceClient Maintenance { get; private set; }
+
         /// <summary>
         /// Origin grpc etcd v3 Client for Lease
         /// </summary>
         public LeaseClient Lease { get; private set; }
+
         /// <summary>
         /// Origin grpc etcd v3 Client for Watch
         /// </summary>
         public WatchClient Watch { get; private set; }
-        /// <summary>
-        /// Options for calls made by client that auth for etcd v3 Client 
-        /// </summary>
-        public CallOptions AuthToken { get; private set; }
 
         /// <summary>
         /// new Client
@@ -55,6 +58,7 @@ namespace ETCD.V3
         public Client(string target, ChannelCredentials credentials = null)
         {
             _Channel = new Channel(target, credentials ?? ChannelCredentials.Insecure);
+            authInvoker = new AuthCallInvoker(_Channel);
             InitClient();
         }
 
@@ -64,32 +68,23 @@ namespace ETCD.V3
         /// <param name="user">User which for auth</param>
         /// <param name="password">User password</param>
         /// <param name="headers">Headers to be sent with the call.</param>
-        /// <param name="deadline">Deadline for the call to finish. null means no deadline.</param>
-        /// <param name="cancellationToken">Can be used to request cancellation of the call.</param>
-        /// <param name="writeOptions">Write options that will be used for this call.</param>
-        /// <param name="propagationToken">Context propagation token obtained from Grpc.Core.ServerCallContext.</param>
-        /// <param name="credentials">Credentials to use for this call.</param>
-        public void NewAuthToken(string user, string password, Metadata headers = null,
-            DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken),
-            WriteOptions writeOptions = null, ContextPropagationToken propagationToken = null,
-            CallCredentials credentials = null)
+        public void NewAuthToken(string user, string password, Metadata headers = null)
         {
             ProtoPreconditions.CheckNotNull(user, nameof(user));
             ProtoPreconditions.CheckNotNull(password, nameof(password));
             var res = this.Authebtucate(user, password);
             var metadata = headers ?? new Metadata();
-            metadata.Add(new Metadata.Entry(Constants.Token, res.Token));
-            AuthToken = new CallOptions(metadata, deadline, cancellationToken, writeOptions, propagationToken, credentials);
+            authInvoker.Token = new Metadata.Entry(Constants.Token, res.Token);
         }
 
         private void InitClient()
         {
-            Auth = new AuthClient(_Channel);
-            KV = new KVClient(_Channel);
-            Cluster = new ClusterClient(_Channel);
-            Maintenance = new MaintenanceClient(_Channel);
-            Lease = new LeaseClient(_Channel);
-            Watch = new WatchClient(_Channel);
+            Auth = new AuthClient(authInvoker);
+            KV = new KVClient(authInvoker);
+            Cluster = new ClusterClient(authInvoker);
+            Maintenance = new MaintenanceClient(authInvoker);
+            Lease = new LeaseClient(authInvoker);
+            Watch = new WatchClient(authInvoker);
         }
 
         /// <summary>

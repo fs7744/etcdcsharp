@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class LeaseExtensions
+    <title>Class AuthCallInvoker
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class LeaseExtensions
+    <meta name="title" content="Class AuthCallInvoker
    ">
     <meta name="generator" content="docfx 2.22.2.0">
     
@@ -109,8 +109,8 @@
                       <a href="ETCD.V3.html" title="ETCD.V3" class="">ETCD.V3</a>
                         
                         <ul class="nav level2">
-                          <li class="">
-                            <a href="ETCD.V3.AuthCallInvoker.html" title="AuthCallInvoker" class="">AuthCallInvoker</a>
+                          <li class="active">
+                            <a href="ETCD.V3.AuthCallInvoker.html" title="AuthCallInvoker" class="active">AuthCallInvoker</a>
                           </li>
                           <li class="">
                             <a href="ETCD.V3.AuthExtensions.html" title="AuthExtensions" class="">AuthExtensions</a>
@@ -127,8 +127,8 @@
                           <li class="">
                             <a href="ETCD.V3.KVExtensions.html" title="KVExtensions" class="">KVExtensions</a>
                           </li>
-                          <li class="active">
-                            <a href="ETCD.V3.LeaseExtensions.html" title="LeaseExtensions" class="active">LeaseExtensions</a>
+                          <li class="">
+                            <a href="ETCD.V3.LeaseExtensions.html" title="LeaseExtensions" class="">LeaseExtensions</a>
                           </li>
                           <li class="">
                             <a href="ETCD.V3.MaintenanceExtensions.html" title="MaintenanceExtensions" class="">MaintenanceExtensions</a>
@@ -507,60 +507,96 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="ETCD.V3.LeaseExtensions">
+            <article class="content wrap" id="_content" data-uid="ETCD.V3.AuthCallInvoker">
   
   
-  <h1 id="ETCD_V3_LeaseExtensions" data-uid="ETCD.V3.LeaseExtensions" class="text-break">Class LeaseExtensions
+  <h1 id="ETCD_V3_AuthCallInvoker" data-uid="ETCD.V3.AuthCallInvoker" class="text-break">Class AuthCallInvoker
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>grpc CallInvoker to handler etcd v3 auth, base on Grpc.Core.DefaultCallInvoker</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">LeaseExtensions</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
+    <div class="level1"><span class="xref">AuthCallInvoker</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="ETCD.V3.html">ETCD.V3</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="ETCD_V3_LeaseExtensions_syntax">Syntax</h5>
+  <h5 id="ETCD_V3_AuthCallInvoker_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class LeaseExtensions</code></pre>
+    <pre><code class="lang-csharp hljs">public class AuthCallInvoker : DefaultCallInvoker</code></pre>
   </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="ETCD_V3_AuthCallInvoker__ctor_" data-uid="ETCD.V3.AuthCallInvoker.#ctor*"></a>
+  <h4 id="ETCD_V3_AuthCallInvoker__ctor_Channel_" data-uid="ETCD.V3.AuthCallInvoker.#ctor(Channel)">AuthCallInvoker(Channel)</h4>
+  <div class="markdown level1 summary"><p>new instance of grpc CallInvoker to handler etcd v3 auth</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AuthCallInvoker(Channel channel)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Channel</span></td>
+        <td><span class="parametername">channel</span></td>
+        <td><p>Channel to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="ETCD_V3_AuthCallInvoker_Token_" data-uid="ETCD.V3.AuthCallInvoker.Token*"></a>
+  <h4 id="ETCD_V3_AuthCallInvoker_Token" data-uid="ETCD.V3.AuthCallInvoker.Token">Token</h4>
+  <div class="markdown level1 summary"><p>etcd v3 auth token</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Metadata.Entry Token { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Metadata.Entry</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   
   
-  <a id="ETCD_V3_LeaseExtensions_CreateLeaseGrantRequest_" data-uid="ETCD.V3.LeaseExtensions.CreateLeaseGrantRequest*"></a>
-  <h4 id="ETCD_V3_LeaseExtensions_CreateLeaseGrantRequest_ETCD_V3_Client_System_Int64_System_Int64_" data-uid="ETCD.V3.LeaseExtensions.CreateLeaseGrantRequest(ETCD.V3.Client,System.Int64,System.Int64)">CreateLeaseGrantRequest(Client, Int64, Int64)</h4>
-  <div class="markdown level1 summary"><p>Create LeaseGrantRequest.</p>
+  <a id="ETCD_V3_AuthCallInvoker_CreateCall_" data-uid="ETCD.V3.AuthCallInvoker.CreateCall*"></a>
+  <h4 id="ETCD_V3_AuthCallInvoker_CreateCall__2_Method___0___1__System_String_CallOptions_" data-uid="ETCD.V3.AuthCallInvoker.CreateCall``2(Method{``0,``1},System.String,CallOptions)">CreateCall&lt;TRequest, TResponse&gt;(Method&lt;TRequest, TResponse&gt;, String, CallOptions)</h4>
+  <div class="markdown level1 summary"><p>Creates call invocation details for given method, will add etcd v3 auth token if have.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static LeaseGrantRequest CreateLeaseGrantRequest(this Client client, long ttl, long id)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override CallInvocationDetails&lt;TRequest, TResponse&gt; CreateCall&lt;TRequest, TResponse&gt;(Method&lt;TRequest, TResponse&gt; method, string host, CallOptions options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -573,20 +609,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="ETCD.V3.Client.html">Client</a></td>
-        <td><span class="parametername">client</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">ttl</span></td>
-        <td><p>TTL is the advisory time-to-live in seconds.</p>
+        <td><span class="xref">Method</span>&lt;TRequest, TResponse&gt;</td>
+        <td><span class="parametername">method</span></td>
+        <td><p>A description of a remote method.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>ID is the requested ID for the lease. If ID is set to 0, the lessor chooses an ID.</p>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">host</span></td>
+        <td><p>host</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CallOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>CallOptions</p>
 </td>
       </tr>
     </tbody>
@@ -601,487 +638,28 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">LeaseGrantRequest</span></td>
-        <td><p>LeaseGrantRequest.</p>
-</td>
+        <td><span class="xref">CallInvocationDetails</span>&lt;TRequest, TResponse&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="ETCD_V3_LeaseExtensions_CreateLeaseRevokeRequest_" data-uid="ETCD.V3.LeaseExtensions.CreateLeaseRevokeRequest*"></a>
-  <h4 id="ETCD_V3_LeaseExtensions_CreateLeaseRevokeRequest_ETCD_V3_Client_System_Int64_" data-uid="ETCD.V3.LeaseExtensions.CreateLeaseRevokeRequest(ETCD.V3.Client,System.Int64)">CreateLeaseRevokeRequest(Client, Int64)</h4>
-  <div class="markdown level1 summary"><p>Create LeaseRevokeRequest.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static LeaseRevokeRequest CreateLeaseRevokeRequest(this Client client, long id)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
-        <th>Type</th>
         <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="ETCD.V3.Client.html">Client</a></td>
-        <td><span class="parametername">client</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>ID is the lease ID to revoke. When the ID is revoked, all associated keys will be deleted.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">LeaseRevokeRequest</span></td>
-        <td><p>The response received from the server.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="ETCD_V3_LeaseExtensions_CreateLeaseTimeToLiveRequest_" data-uid="ETCD.V3.LeaseExtensions.CreateLeaseTimeToLiveRequest*"></a>
-  <h4 id="ETCD_V3_LeaseExtensions_CreateLeaseTimeToLiveRequest_ETCD_V3_Client_System_Int64_System_Boolean_" data-uid="ETCD.V3.LeaseExtensions.CreateLeaseTimeToLiveRequest(ETCD.V3.Client,System.Int64,System.Boolean)">CreateLeaseTimeToLiveRequest(Client, Int64, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Create LeaseTimeToLiveRequest.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static LeaseTimeToLiveRequest CreateLeaseTimeToLiveRequest(this Client client, long id, bool keys = false)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ETCD.V3.Client.html">Client</a></td>
-        <td><span class="parametername">client</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>ID is the lease ID for the lease.</p>
+        <td><span class="parametername">TRequest</span></td>
+        <td><p>Request type</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">keys</span></td>
-        <td><p>keys is true to query all the keys attached to this lease.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">LeaseTimeToLiveRequest</span></td>
-        <td><p>LeaseTimeToLiveRequest.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="ETCD_V3_LeaseExtensions_LeaseGrant_" data-uid="ETCD.V3.LeaseExtensions.LeaseGrant*"></a>
-  <h4 id="ETCD_V3_LeaseExtensions_LeaseGrant_ETCD_V3_Client_System_Int64_System_Int64_" data-uid="ETCD.V3.LeaseExtensions.LeaseGrant(ETCD.V3.Client,System.Int64,System.Int64)">LeaseGrant(Client, Int64, Int64)</h4>
-  <div class="markdown level1 summary"><p>LeaseGrant creates a lease which expires if the server does not receive a keepAlive
-within a given time to live period. All keys attached to the lease will be expired and
-deleted if the lease expires. Each expired key generates a delete event in the event history.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static LeaseGrantResponse LeaseGrant(this Client client, long ttl, long id)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ETCD.V3.Client.html">Client</a></td>
-        <td><span class="parametername">client</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">ttl</span></td>
-        <td><p>TTL is the advisory time-to-live in seconds.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>ID is the requested ID for the lease. If ID is set to 0, the lessor chooses an ID.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">LeaseGrantResponse</span></td>
-        <td><p>The response received from the server.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="ETCD_V3_LeaseExtensions_LeaseGrantAsync_" data-uid="ETCD.V3.LeaseExtensions.LeaseGrantAsync*"></a>
-  <h4 id="ETCD_V3_LeaseExtensions_LeaseGrantAsync_ETCD_V3_Client_System_Int64_System_Int64_" data-uid="ETCD.V3.LeaseExtensions.LeaseGrantAsync(ETCD.V3.Client,System.Int64,System.Int64)">LeaseGrantAsync(Client, Int64, Int64)</h4>
-  <div class="markdown level1 summary"><p>LeaseGrant creates a lease which expires if the server does not receive a keepAlive
-within a given time to live period. All keys attached to the lease will be expired and
-deleted if the lease expires. Each expired key generates a delete event in the event history.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AsyncUnaryCall&lt;LeaseGrantResponse&gt; LeaseGrantAsync(this Client client, long ttl, long id)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ETCD.V3.Client.html">Client</a></td>
-        <td><span class="parametername">client</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">ttl</span></td>
-        <td><p>TTL is the advisory time-to-live in seconds.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>ID is the requested ID for the lease. If ID is set to 0, the lessor chooses an ID.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">AsyncUnaryCall</span>&lt;<span class="xref">LeaseGrantResponse</span>&gt;</td>
-        <td><p>The call object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="ETCD_V3_LeaseExtensions_LeaseKeepAlive_" data-uid="ETCD.V3.LeaseExtensions.LeaseKeepAlive*"></a>
-  <h4 id="ETCD_V3_LeaseExtensions_LeaseKeepAlive_ETCD_V3_Client_" data-uid="ETCD.V3.LeaseExtensions.LeaseKeepAlive(ETCD.V3.Client)">LeaseKeepAlive(Client)</h4>
-  <div class="markdown level1 summary"><p>LeaseKeepAlive keeps the lease alive by streaming keep alive requests from the client
-to the server and streaming keep alive responses from the server to the client.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AsyncDuplexStreamingCall&lt;LeaseKeepAliveRequest, LeaseKeepAliveResponse&gt; LeaseKeepAlive(this Client client)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ETCD.V3.Client.html">Client</a></td>
-        <td><span class="parametername">client</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">AsyncDuplexStreamingCall</span>&lt;<span class="xref">LeaseKeepAliveRequest</span>, <span class="xref">LeaseKeepAliveResponse</span>&gt;</td>
-        <td><p>The call object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="ETCD_V3_LeaseExtensions_LeaseRevoke_" data-uid="ETCD.V3.LeaseExtensions.LeaseRevoke*"></a>
-  <h4 id="ETCD_V3_LeaseExtensions_LeaseRevoke_ETCD_V3_Client_System_Int64_" data-uid="ETCD.V3.LeaseExtensions.LeaseRevoke(ETCD.V3.Client,System.Int64)">LeaseRevoke(Client, Int64)</h4>
-  <div class="markdown level1 summary"><p>LeaseRevoke revokes a lease. All keys attached to the lease will expire and be deleted.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static LeaseRevokeResponse LeaseRevoke(this Client client, long id)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ETCD.V3.Client.html">Client</a></td>
-        <td><span class="parametername">client</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>ID is the lease ID to revoke. When the ID is revoked, all associated keys will be deleted.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">LeaseRevokeResponse</span></td>
-        <td><p>The response received from the server.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="ETCD_V3_LeaseExtensions_LeaseRevokeAsync_" data-uid="ETCD.V3.LeaseExtensions.LeaseRevokeAsync*"></a>
-  <h4 id="ETCD_V3_LeaseExtensions_LeaseRevokeAsync_ETCD_V3_Client_System_Int64_" data-uid="ETCD.V3.LeaseExtensions.LeaseRevokeAsync(ETCD.V3.Client,System.Int64)">LeaseRevokeAsync(Client, Int64)</h4>
-  <div class="markdown level1 summary"><p>LeaseRevoke revokes a lease. All keys attached to the lease will expire and be deleted.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AsyncUnaryCall&lt;LeaseRevokeResponse&gt; LeaseRevokeAsync(this Client client, long id)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ETCD.V3.Client.html">Client</a></td>
-        <td><span class="parametername">client</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>ID is the lease ID to revoke. When the ID is revoked, all associated keys will be deleted.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">AsyncUnaryCall</span>&lt;<span class="xref">LeaseRevokeResponse</span>&gt;</td>
-        <td><p>The call object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="ETCD_V3_LeaseExtensions_LeaseTimeToLive_" data-uid="ETCD.V3.LeaseExtensions.LeaseTimeToLive*"></a>
-  <h4 id="ETCD_V3_LeaseExtensions_LeaseTimeToLive_ETCD_V3_Client_System_Int64_System_Boolean_" data-uid="ETCD.V3.LeaseExtensions.LeaseTimeToLive(ETCD.V3.Client,System.Int64,System.Boolean)">LeaseTimeToLive(Client, Int64, Boolean)</h4>
-  <div class="markdown level1 summary"><p>LeaseTimeToLive retrieves lease information.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static LeaseTimeToLiveResponse LeaseTimeToLive(this Client client, long id, bool keys = false)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ETCD.V3.Client.html">Client</a></td>
-        <td><span class="parametername">client</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>ID is the lease ID for the lease.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">keys</span></td>
-        <td><p>keys is true to query all the keys attached to this lease.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">LeaseTimeToLiveResponse</span></td>
-        <td><p>The response received from the server.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="ETCD_V3_LeaseExtensions_LeaseTimeToLiveAsync_" data-uid="ETCD.V3.LeaseExtensions.LeaseTimeToLiveAsync*"></a>
-  <h4 id="ETCD_V3_LeaseExtensions_LeaseTimeToLiveAsync_ETCD_V3_Client_System_Int64_System_Boolean_" data-uid="ETCD.V3.LeaseExtensions.LeaseTimeToLiveAsync(ETCD.V3.Client,System.Int64,System.Boolean)">LeaseTimeToLiveAsync(Client, Int64, Boolean)</h4>
-  <div class="markdown level1 summary"><p>LeaseTimeToLive retrieves lease information.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AsyncUnaryCall&lt;LeaseTimeToLiveResponse&gt; LeaseTimeToLiveAsync(this Client client, long id, bool keys = false)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="ETCD.V3.Client.html">Client</a></td>
-        <td><span class="parametername">client</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>ID is the lease ID for the lease.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">keys</span></td>
-        <td><p>keys is true to query all the keys attached to this lease.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">AsyncUnaryCall</span>&lt;<span class="xref">LeaseTimeToLiveResponse</span>&gt;</td>
-        <td><p>The call object.</p>
+        <td><span class="parametername">TResponse</span></td>
+        <td><p>Response type</p>
 </td>
       </tr>
     </tbody>

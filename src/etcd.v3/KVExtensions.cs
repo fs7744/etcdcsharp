@@ -68,7 +68,7 @@ namespace ETCD.V3
             bool prevKv = false, bool ignoreLease = false, bool ignoreValue = false)
         {
             var request = client.CreatePutRequest(key, value, lease, prevKv, ignoreLease, ignoreValue);
-            return client.KV.Put(request, client.AuthToken);
+            return client.KV.Put(request);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace ETCD.V3
             bool prevKv = false, bool ignoreLease = false, bool ignoreValue = false)
         {
             var request = client.CreatePutRequest(key, value, lease, prevKv, ignoreLease, ignoreValue);
-            return client.KV.PutAsync(request, client.AuthToken);
+            return client.KV.PutAsync(request);
         }
 
         #endregion Put
@@ -361,7 +361,7 @@ namespace ETCD.V3
             var request = client.CreateRangeRequest(key, rangeEnd,
                 limit, revision, sortOrder, sortTarget, serializable, keysOnly, countOnly, minModRevision,
                 maxModRevision, minCreateRevision, maxCreateRevision);
-            return client.KV.Range(request, client.AuthToken);
+            return client.KV.Range(request);
         }
 
         /// <summary>
@@ -451,7 +451,7 @@ namespace ETCD.V3
             var request = client.CreateRangeRequest(key, rangeEnd,
                 limit, revision, sortOrder, sortTarget, serializable, keysOnly, countOnly, minModRevision,
                 maxModRevision, minCreateRevision, maxCreateRevision);
-            return client.KV.RangeAsync(request, client.AuthToken);
+            return client.KV.RangeAsync(request);
         }
 
         /// <summary>
@@ -598,7 +598,7 @@ namespace ETCD.V3
            bool prevKv = false)
         {
             var request = client.CreateDeleteRangeRequest(key, rangeEnd, prevKv);
-            return client.KV.DeleteRange(request, client.AuthToken);
+            return client.KV.DeleteRange(request);
         }
 
         /// <summary>
@@ -668,7 +668,7 @@ namespace ETCD.V3
            bool prevKv = false)
         {
             var request = client.CreateDeleteRangeRequest(key, rangeEnd, prevKv);
-            return client.KV.DeleteRangeAsync(request, client.AuthToken);
+            return client.KV.DeleteRangeAsync(request);
         }
 
         /// <summary>
@@ -730,7 +730,7 @@ namespace ETCD.V3
           bool prevKv = false)
         {
             var request = client.CreateCompactionRequest(revision, physical);
-            return client.KV.Compact(request, client.AuthToken);
+            return client.KV.Compact(request);
         }
 
         /// <summary>
@@ -745,7 +745,7 @@ namespace ETCD.V3
           bool prevKv = false)
         {
             var request = client.CreateCompactionRequest(revision, physical);
-            return client.KV.CompactAsync(request, client.AuthToken);
+            return client.KV.CompactAsync(request);
         }
 
         #endregion Compact
@@ -762,7 +762,7 @@ namespace ETCD.V3
         /// <returns>The response received from the server.</returns>
         public static TxnResponse Txn(this Client client, TxnRequest request)
         {
-            return client.KV.Txn(request, client.AuthToken);
+            return client.KV.Txn(request);
         }
 
         /// <summary>
@@ -775,7 +775,7 @@ namespace ETCD.V3
         /// <returns>The call object.</returns>
         public static AsyncUnaryCall<TxnResponse> TxnAsync(this Client client, TxnRequest request)
         {
-            return client.KV.TxnAsync(request, client.AuthToken);
+            return client.KV.TxnAsync(request);
         }
 
         #endregion Txn

@@ -33,7 +33,7 @@ namespace ETCD.V3
         public static LeaseGrantResponse LeaseGrant(this Client client, long ttl, long id)
         {
             var request = client.CreateLeaseGrantRequest(ttl, id);
-            return client.Lease.LeaseGrant(request, client.AuthToken);
+            return client.Lease.LeaseGrant(request);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace ETCD.V3
         public static AsyncUnaryCall<LeaseGrantResponse> LeaseGrantAsync(this Client client, long ttl, long id)
         {
             var request = client.CreateLeaseGrantRequest(ttl, id);
-            return client.Lease.LeaseGrantAsync(request, client.AuthToken);
+            return client.Lease.LeaseGrantAsync(request);
         }
 
         #endregion LeaseGrant
@@ -75,7 +75,7 @@ namespace ETCD.V3
         public static LeaseRevokeResponse LeaseRevoke(this Client client, long id)
         {
             var request = client.CreateLeaseRevokeRequest(id);
-            return client.Lease.LeaseRevoke(request, client.AuthToken);
+            return client.Lease.LeaseRevoke(request);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace ETCD.V3
         public static AsyncUnaryCall<LeaseRevokeResponse> LeaseRevokeAsync(this Client client, long id)
         {
             var request = client.CreateLeaseRevokeRequest(id);
-            return client.Lease.LeaseRevokeAsync(request, client.AuthToken);
+            return client.Lease.LeaseRevokeAsync(request);
         }
 
         #endregion LeaseRevoke
@@ -98,7 +98,7 @@ namespace ETCD.V3
         /// <returns>The call object.</returns>
         public static AsyncDuplexStreamingCall<LeaseKeepAliveRequest, LeaseKeepAliveResponse> LeaseKeepAlive(this Client client)
         {
-            return client.Lease.LeaseKeepAlive(client.AuthToken);
+            return client.Lease.LeaseKeepAlive();
         }
 
         #region LeaseTimeToLive
@@ -127,7 +127,7 @@ namespace ETCD.V3
         public static LeaseTimeToLiveResponse LeaseTimeToLive(this Client client, long id, bool keys = false)
         {
             var request = client.CreateLeaseTimeToLiveRequest(id, keys);
-            return client.Lease.LeaseTimeToLive(request, client.AuthToken);
+            return client.Lease.LeaseTimeToLive(request);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace ETCD.V3
         public static AsyncUnaryCall<LeaseTimeToLiveResponse> LeaseTimeToLiveAsync(this Client client, long id, bool keys = false)
         {
             var request = client.CreateLeaseTimeToLiveRequest(id, keys);
-            return client.Lease.LeaseTimeToLiveAsync(request, client.AuthToken);
+            return client.Lease.LeaseTimeToLiveAsync(request);
         }
 
         #endregion LeaseTimeToLive

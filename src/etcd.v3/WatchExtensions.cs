@@ -15,7 +15,7 @@ namespace ETCD.V3
         /// <returns>The call object.</returns>
         public static AsyncDuplexStreamingCall<WatchRequest, WatchResponse> Watch(this Client client)
         {
-            return client.Watch.Watch(client.AuthToken);
+            return client.Watch.Watch();
         }
     }
 }

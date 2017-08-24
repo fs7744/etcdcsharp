@@ -33,7 +33,7 @@ namespace ETCD.V3
         public static AuthenticateResponse Authebtucate(this Client client, string name, string password)
         {
             var request = client.CreateAuthenticateRequest(name, password);
-            return client.Auth.Authenticate(request, client.AuthToken);
+            return client.Auth.Authenticate(request);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace ETCD.V3
         public static AsyncUnaryCall<AuthenticateResponse> AuthenticateAsync(this Client client, string name, string password)
         {
             var request = client.CreateAuthenticateRequest(name, password);
-            return client.Auth.AuthenticateAsync(request, client.AuthToken);
+            return client.Auth.AuthenticateAsync(request);
         }
 
         #endregion Authebtucate
@@ -58,7 +58,7 @@ namespace ETCD.V3
         /// <returns>The response received from the server.</returns>
         public static AuthEnableResponse AuthEnable(this Client client)
         {
-            return client.Auth.AuthEnable(new AuthEnableRequest(), client.AuthToken);
+            return client.Auth.AuthEnable(new AuthEnableRequest());
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace ETCD.V3
         /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthEnableResponse> AuthEnableAsync(this Client client)
         {
-            return client.Auth.AuthEnableAsync(new AuthEnableRequest(), client.AuthToken);
+            return client.Auth.AuthEnableAsync(new AuthEnableRequest());
         }
 
         #endregion AuthEnable
@@ -80,7 +80,7 @@ namespace ETCD.V3
         /// <returns>The response received from the server.</returns>
         public static AuthDisableResponse AuthDisable(this Client client)
         {
-            return client.Auth.AuthDisable(new AuthDisableRequest(), client.AuthToken);
+            return client.Auth.AuthDisable(new AuthDisableRequest());
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace ETCD.V3
         /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthDisableResponse> AuthDisableAsync(this Client client)
         {
-            return client.Auth.AuthDisableAsync(new AuthDisableRequest(), client.AuthToken);
+            return client.Auth.AuthDisableAsync(new AuthDisableRequest());
         }
 
         #endregion AuthDisable
@@ -120,7 +120,7 @@ namespace ETCD.V3
         public static AuthUserAddResponse UserAdd(this Client client, string name, string password)
         {
             var request = client.CreateAuthUserAddRequest(name, password);
-            return client.Auth.UserAdd(request, client.AuthToken);
+            return client.Auth.UserAdd(request);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace ETCD.V3
         public static AsyncUnaryCall<AuthUserAddResponse> UserAddAsync(this Client client, string name, string password)
         {
             var request = client.CreateAuthUserAddRequest(name, password);
-            return client.Auth.UserAddAsync(request, client.AuthToken);
+            return client.Auth.UserAddAsync(request);
         }
 
         #endregion AuthDisable
@@ -160,7 +160,7 @@ namespace ETCD.V3
         public static AuthUserGetResponse UserGet(this Client client, string name)
         {
             var request = client.CreateAuthUserGetRequest(name);
-            return client.Auth.UserGet(request, client.AuthToken);
+            return client.Auth.UserGet(request);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace ETCD.V3
         public static AsyncUnaryCall<AuthUserGetResponse> UserGetAsync(this Client client, string name)
         {
             var request = client.CreateAuthUserGetRequest(name);
-            return client.Auth.UserGetAsync(request, client.AuthToken);
+            return client.Auth.UserGetAsync(request);
         }
 
         #endregion UserGet
@@ -184,7 +184,7 @@ namespace ETCD.V3
         /// <returns>The response received from the server.</returns>
         public static AuthUserListResponse UserList(this Client client)
         {
-            return client.Auth.UserList(new AuthUserListRequest(), client.AuthToken);
+            return client.Auth.UserList(new AuthUserListRequest());
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace ETCD.V3
         /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthUserListResponse> UserListAsync(this Client client)
         {
-            return client.Auth.UserListAsync(new AuthUserListRequest(), client.AuthToken);
+            return client.Auth.UserListAsync(new AuthUserListRequest());
         }
 
         #endregion UserList
@@ -221,7 +221,7 @@ namespace ETCD.V3
         public static AuthUserDeleteResponse UserDelete(this Client client, string name)
         {
             var request = client.CreateAuthUserDeleteRequest(name);
-            return client.Auth.UserDelete(request, client.AuthToken);
+            return client.Auth.UserDelete(request);
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace ETCD.V3
         public static AsyncUnaryCall<AuthUserDeleteResponse> UserDeleteAsync(this Client client, string name)
         {
             var request = client.CreateAuthUserDeleteRequest(name);
-            return client.Auth.UserDeleteAsync(request, client.AuthToken);
+            return client.Auth.UserDeleteAsync(request);
         }
 
         #endregion UserDelete
@@ -264,7 +264,7 @@ namespace ETCD.V3
         public static AuthUserChangePasswordResponse UserChangePassword(this Client client, string name, string password)
         {
             var request = client.CreateAuthUserChangePasswordRequest(name, password);
-            return client.Auth.UserChangePassword(request, client.AuthToken);
+            return client.Auth.UserChangePassword(request);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace ETCD.V3
             this Client client, string name, string password)
         {
             var request = client.CreateAuthUserChangePasswordRequest(name, password);
-            return client.Auth.UserChangePasswordAsync(request, client.AuthToken);
+            return client.Auth.UserChangePasswordAsync(request);
         }
 
         #endregion UserChangePassword
@@ -310,7 +310,7 @@ namespace ETCD.V3
             string user, string role)
         {
             var request = client.CreateUserGrantRoleRequest(user, role);
-            return client.Auth.UserGrantRole(request, client.AuthToken);
+            return client.Auth.UserGrantRole(request);
         }
 
         /// <summary>
@@ -323,7 +323,7 @@ namespace ETCD.V3
             this Client client, string user, string role)
         {
             var request = client.CreateUserGrantRoleRequest(user, role);
-            return client.Auth.UserGrantRoleAsync(request, client.AuthToken);
+            return client.Auth.UserGrantRoleAsync(request);
         }
 
         #endregion UserGrantRole
@@ -356,7 +356,7 @@ namespace ETCD.V3
             string user, string role)
         {
             var request = client.CreateUserRevokeRoleRequest(user, role);
-            return client.Auth.UserRevokeRole(request, client.AuthToken);
+            return client.Auth.UserRevokeRole(request);
         }
 
         /// <summary>
@@ -369,7 +369,7 @@ namespace ETCD.V3
             this Client client, string user, string role)
         {
             var request = client.CreateUserRevokeRoleRequest(user, role);
-            return client.Auth.UserRevokeRoleAsync(request, client.AuthToken);
+            return client.Auth.UserRevokeRoleAsync(request);
         }
 
         #endregion UserRevokeRole
@@ -397,7 +397,7 @@ namespace ETCD.V3
         public static AuthRoleAddResponse RoleAdd(this Client client, string role)
         {
             var request = client.CreateRoleAddRequest(role);
-            return client.Auth.RoleAdd(request, client.AuthToken);
+            return client.Auth.RoleAdd(request);
         }
 
         /// <summary>
@@ -409,7 +409,7 @@ namespace ETCD.V3
             this Client client, string role)
         {
             var request = client.CreateRoleAddRequest(role);
-            return client.Auth.RoleAddAsync(request, client.AuthToken);
+            return client.Auth.RoleAddAsync(request);
         }
 
         #endregion RoleAdd
@@ -437,7 +437,7 @@ namespace ETCD.V3
         public static AuthRoleGetResponse RoleGet(this Client client, string role)
         {
             var request = client.CreateRoleGetRequest(role);
-            return client.Auth.RoleGet(request, client.AuthToken);
+            return client.Auth.RoleGet(request);
         }
 
         /// <summary>
@@ -449,7 +449,7 @@ namespace ETCD.V3
             this Client client, string role)
         {
             var request = client.CreateRoleGetRequest(role);
-            return client.Auth.RoleGetAsync(request, client.AuthToken);
+            return client.Auth.RoleGetAsync(request);
         }
 
         #endregion RoleGet
@@ -462,7 +462,7 @@ namespace ETCD.V3
         /// <returns>The response received from the server.</returns>
         public static AuthRoleListResponse RoleList(this Client client)
         {
-            return client.Auth.RoleList(new AuthRoleListRequest(), client.AuthToken);
+            return client.Auth.RoleList(new AuthRoleListRequest());
         }
 
         /// <summary>
@@ -471,7 +471,7 @@ namespace ETCD.V3
         /// <returns>The call object.</returns>
         public static AsyncUnaryCall<AuthRoleListResponse> RoleListAsync(this Client client)
         {
-            return client.Auth.RoleListAsync(new AuthRoleListRequest(), client.AuthToken);
+            return client.Auth.RoleListAsync(new AuthRoleListRequest());
         }
 
         #endregion RoleList
@@ -499,7 +499,7 @@ namespace ETCD.V3
         public static AuthRoleDeleteResponse RoleDelete(this Client client, string role)
         {
             var request = client.CreateRoleDeleteRequest(role);
-            return client.Auth.RoleDelete(request, client.AuthToken);
+            return client.Auth.RoleDelete(request);
         }
 
         /// <summary>
@@ -511,7 +511,7 @@ namespace ETCD.V3
             this Client client, string role)
         {
             var request = client.CreateRoleDeleteRequest(role);
-            return client.Auth.RoleDeleteAsync(request, client.AuthToken);
+            return client.Auth.RoleDeleteAsync(request);
         }
 
         #endregion RoleDelete
@@ -561,7 +561,7 @@ namespace ETCD.V3
             string name, ByteString key, ByteString rangeEnd, Permission.Types.Type permType = Permission.Types.Type.Read)
         {
             var request = client.CreateRoleGrantPermissionRequest(name, key, rangeEnd, permType);
-            return client.Auth.RoleGrantPermission(request, client.AuthToken);
+            return client.Auth.RoleGrantPermission(request);
         }
 
         /// <summary>
@@ -599,7 +599,7 @@ namespace ETCD.V3
             this Client client, string name, ByteString key, ByteString rangeEnd, Permission.Types.Type permType = Permission.Types.Type.Read)
         {
             var request = client.CreateRoleGrantPermissionRequest(name, key, rangeEnd, permType);
-            return client.Auth.RoleGrantPermissionAsync(request, client.AuthToken);
+            return client.Auth.RoleGrantPermissionAsync(request);
         }
 
         /// <summary>
@@ -662,7 +662,7 @@ namespace ETCD.V3
             string role, string key, string rangeEnd)
         {
             var request = client.CreateRoleRevokePermissionRequest(role, key, rangeEnd);
-            return client.Auth.RoleRevokePermission(request, client.AuthToken);
+            return client.Auth.RoleRevokePermission(request);
         }
 
         /// <summary>
@@ -680,7 +680,7 @@ namespace ETCD.V3
             this Client client, string role, string key, string rangeEnd)
         {
             var request = client.CreateRoleRevokePermissionRequest(role, key, rangeEnd);
-            return client.Auth.RoleRevokePermissionAsync(request, client.AuthToken);
+            return client.Auth.RoleRevokePermissionAsync(request);
         }
 
         #endregion RoleRevokePermission

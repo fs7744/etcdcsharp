@@ -637,6 +637,51 @@ references:
   commentId: N:ETCD.V3
   fullName: ETCD.V3
   nameWithType: ETCD.V3
+- uid: ETCD.V3.AuthCallInvoker
+  name: AuthCallInvoker
+  href: api/ETCD.V3.AuthCallInvoker.html
+  commentId: T:ETCD.V3.AuthCallInvoker
+  fullName: ETCD.V3.AuthCallInvoker
+  nameWithType: AuthCallInvoker
+- uid: ETCD.V3.AuthCallInvoker.#ctor(Channel)
+  name: AuthCallInvoker(Channel)
+  href: api/ETCD.V3.AuthCallInvoker.html#ETCD_V3_AuthCallInvoker__ctor_Channel_
+  commentId: M:ETCD.V3.AuthCallInvoker.#ctor(Channel)
+  fullName: ETCD.V3.AuthCallInvoker.AuthCallInvoker(Channel)
+  nameWithType: AuthCallInvoker.AuthCallInvoker(Channel)
+- uid: ETCD.V3.AuthCallInvoker.#ctor*
+  name: AuthCallInvoker
+  href: api/ETCD.V3.AuthCallInvoker.html#ETCD_V3_AuthCallInvoker__ctor_
+  commentId: Overload:ETCD.V3.AuthCallInvoker.#ctor
+  fullName: ETCD.V3.AuthCallInvoker.AuthCallInvoker
+  nameWithType: AuthCallInvoker.AuthCallInvoker
+- uid: ETCD.V3.AuthCallInvoker.CreateCall*
+  name: CreateCall
+  href: api/ETCD.V3.AuthCallInvoker.html#ETCD_V3_AuthCallInvoker_CreateCall_
+  commentId: Overload:ETCD.V3.AuthCallInvoker.CreateCall
+  fullName: ETCD.V3.AuthCallInvoker.CreateCall
+  nameWithType: AuthCallInvoker.CreateCall
+- uid: ETCD.V3.AuthCallInvoker.CreateCall``2(Method{``0,``1},System.String,CallOptions)
+  name: CreateCall<TRequest, TResponse>(Method<TRequest, TResponse>, String, CallOptions)
+  href: api/ETCD.V3.AuthCallInvoker.html#ETCD_V3_AuthCallInvoker_CreateCall__2_Method___0___1__System_String_CallOptions_
+  commentId: M:ETCD.V3.AuthCallInvoker.CreateCall``2(Method{``0,``1},System.String,CallOptions)
+  name.vb: CreateCall(Of TRequest, TResponse)(Method(Of TRequest, TResponse), String, CallOptions)
+  fullName: ETCD.V3.AuthCallInvoker.CreateCall<TRequest, TResponse>(Method<TRequest, TResponse>, System.String, CallOptions)
+  fullName.vb: ETCD.V3.AuthCallInvoker.CreateCall(Of TRequest, TResponse)(Method(Of TRequest, TResponse), System.String, CallOptions)
+  nameWithType: AuthCallInvoker.CreateCall<TRequest, TResponse>(Method<TRequest, TResponse>, String, CallOptions)
+  nameWithType.vb: AuthCallInvoker.CreateCall(Of TRequest, TResponse)(Method(Of TRequest, TResponse), String, CallOptions)
+- uid: ETCD.V3.AuthCallInvoker.Token
+  name: Token
+  href: api/ETCD.V3.AuthCallInvoker.html#ETCD_V3_AuthCallInvoker_Token
+  commentId: P:ETCD.V3.AuthCallInvoker.Token
+  fullName: ETCD.V3.AuthCallInvoker.Token
+  nameWithType: AuthCallInvoker.Token
+- uid: ETCD.V3.AuthCallInvoker.Token*
+  name: Token
+  href: api/ETCD.V3.AuthCallInvoker.html#ETCD_V3_AuthCallInvoker_Token_
+  commentId: Overload:ETCD.V3.AuthCallInvoker.Token
+  fullName: ETCD.V3.AuthCallInvoker.Token
+  nameWithType: AuthCallInvoker.Token
 - uid: ETCD.V3.AuthExtensions
   name: AuthExtensions
   href: api/ETCD.V3.AuthExtensions.html
@@ -1213,18 +1258,6 @@ references:
   commentId: Overload:ETCD.V3.Client.Auth
   fullName: ETCD.V3.Client.Auth
   nameWithType: Client.Auth
-- uid: ETCD.V3.Client.AuthToken
-  name: AuthToken
-  href: api/ETCD.V3.Client.html#ETCD_V3_Client_AuthToken
-  commentId: P:ETCD.V3.Client.AuthToken
-  fullName: ETCD.V3.Client.AuthToken
-  nameWithType: Client.AuthToken
-- uid: ETCD.V3.Client.AuthToken*
-  name: AuthToken
-  href: api/ETCD.V3.Client.html#ETCD_V3_Client_AuthToken_
-  commentId: Overload:ETCD.V3.Client.AuthToken
-  fullName: ETCD.V3.Client.AuthToken
-  nameWithType: Client.AuthToken
 - uid: ETCD.V3.Client.Close
   name: Close()
   href: api/ETCD.V3.Client.html#ETCD_V3_Client_Close
@@ -1297,15 +1330,12 @@ references:
   commentId: Overload:ETCD.V3.Client.Maintenance
   fullName: ETCD.V3.Client.Maintenance
   nameWithType: Client.Maintenance
-- uid: ETCD.V3.Client.NewAuthToken(System.String,System.String,Metadata,System.Nullable{DateTime},CancellationToken,WriteOptions,ContextPropagationToken,CallCredentials)
-  name: NewAuthToken(String, String, Metadata, Nullable<DateTime>, CancellationToken, WriteOptions, ContextPropagationToken, CallCredentials)
-  href: api/ETCD.V3.Client.html#ETCD_V3_Client_NewAuthToken_System_String_System_String_Metadata_System_Nullable_DateTime__CancellationToken_WriteOptions_ContextPropagationToken_CallCredentials_
-  commentId: M:ETCD.V3.Client.NewAuthToken(System.String,System.String,Metadata,System.Nullable{DateTime},CancellationToken,WriteOptions,ContextPropagationToken,CallCredentials)
-  name.vb: NewAuthToken(String, String, Metadata, Nullable(Of DateTime), CancellationToken, WriteOptions, ContextPropagationToken, CallCredentials)
-  fullName: ETCD.V3.Client.NewAuthToken(System.String, System.String, Metadata, System.Nullable<DateTime>, CancellationToken, WriteOptions, ContextPropagationToken, CallCredentials)
-  fullName.vb: ETCD.V3.Client.NewAuthToken(System.String, System.String, Metadata, System.Nullable(Of DateTime), CancellationToken, WriteOptions, ContextPropagationToken, CallCredentials)
-  nameWithType: Client.NewAuthToken(String, String, Metadata, Nullable<DateTime>, CancellationToken, WriteOptions, ContextPropagationToken, CallCredentials)
-  nameWithType.vb: Client.NewAuthToken(String, String, Metadata, Nullable(Of DateTime), CancellationToken, WriteOptions, ContextPropagationToken, CallCredentials)
+- uid: ETCD.V3.Client.NewAuthToken(System.String,System.String,Metadata)
+  name: NewAuthToken(String, String, Metadata)
+  href: api/ETCD.V3.Client.html#ETCD_V3_Client_NewAuthToken_System_String_System_String_Metadata_
+  commentId: M:ETCD.V3.Client.NewAuthToken(System.String,System.String,Metadata)
+  fullName: ETCD.V3.Client.NewAuthToken(System.String, System.String, Metadata)
+  nameWithType: Client.NewAuthToken(String, String, Metadata)
 - uid: ETCD.V3.Client.NewAuthToken*
   name: NewAuthToken
   href: api/ETCD.V3.Client.html#ETCD_V3_Client_NewAuthToken_
