@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+	 <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <Version>0.0.1.4-pre</Version>
     <Description>etcd chsarp generate by grpc tools</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -11,13 +11,30 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>change etcd v3 auth to use AuthCallInvoker</PackageReleaseNotes>
     <Authors>Victor.x.qu</Authors>
-    <RootNamespace>ETCD.V3</RootNamespace>
+    <RootNamespace>Etcd</RootNamespace>
+	  <IncludeGoogleApiCommonProtos>True</IncludeGoogleApiCommonProtos>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.4.0" />
-    <PackageReference Include="Grpc" Version="1.6.0-pre1" />
-    <PackageReference Include="Grpc.Auth" Version="1.6.0-pre1" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4" />
+	  <PackageReference Include="Google.Api.CommonProtos" Version="2.16.0" />
+	  <PackageReference Include="Google.Protobuf" Version="3.30.2" />
+	  <PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
+	  <PackageReference Include="Grpc.Tools" Version="2.72.0">
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		  <PrivateAssets>all</PrivateAssets>
+	  </PackageReference>
   </ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="proto\etcd\auth.proto" GrpcServices="Client" />
+		<Protobuf Include="proto\etcd\election.proto" GrpcServices="Client" />
+		<Protobuf Include="proto\etcd\kv.proto" GrpcServices="Client" />
+		<Protobuf Include="proto\etcd\lock.proto" GrpcServices="Client" />
+		<Protobuf Include="proto\etcd\rpc.proto" GrpcServices="Client" />
+		<Protobuf Include="proto\etcd\version.proto" GrpcServices="Client" />
+
+		<Protobuf Include="proto\gogoproto\gogo.proto" GrpcServices="Client" />
+	</ItemGroup>
 
 </Project>

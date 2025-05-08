@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf;
+using Grpc.Net.Client;
 using System;
 
 namespace ETCD.V3.Test
