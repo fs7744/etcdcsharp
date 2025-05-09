@@ -12,22 +12,55 @@ namespace Test
         {
             var factory = EtcdClientFactory.Create();
             var client = factory.CreateClient(new EtcdClientOptions() { Address = ["http://172.16.171.56:8068"] });
-            using var watcher = await client.WatchAsync("/ReverseProxy/");
-            var c = 0;
-            await foreach (var item in watcher.ReadAllAsync())
-            {
-                foreach (var i in item.Events)
-                {
-                    Console.WriteLine($"{i.Type} {i.Kv.Key.ToStrUtf8()}");
-                }
-                c++;
+            //await client.WatchRangeBackendAsync("/ReverseProxy/", i =>
+            //{
+            //    if (i.Events.Count > 0)
+            //    {
+            //        foreach (var item in i.Events)
+            //        {
+            //            Console.WriteLine($"{item.Type} {item.Kv.Key.ToStrUtf8()}");
+            //        }
+            //        throw new NotImplementedException();
+            //    }
+            //    return Task.CompletedTask;
+            //}, startRevision: 6, reWatchWhenException: true);
+            client.WatchBackend("/ReverseProxy/listen/1", i =>
+           {
+               if (i.Events.Count > 0)
+               {
+                   foreach (var item in i.Events)
+                   {
+                       Console.WriteLine($"{item.Type} {item.Kv.Key.ToStrUtf8()}");
+                   }
+                   throw new NotImplementedException();
+               }
+           }, startRevision: 0, reWatchWhenException: true);
+            Console.ReadLine();
+            //using var watcher = await client.WatchRangeAsync("/ReverseProxy/", startRevision: 6);
+            //watcher.ForAll(i =>
+            //{
+            //    foreach (var item in i.Events)
+            //    {
+            //        Console.WriteLine($"{item.Type} {item.Kv.Key.ToStrUtf8()}");
+            //    }
+            //});
 
-                if (c > 5)
-                {
-                    await watcher.CancelAsync();
-                    break;
-                }
-            }
+            //var c = 0;
+            //await foreach (var item in watcher.ReadAllAsync())
+            //{
+            //    foreach (var i in item.Events)
+            //    {
+            //        Console.WriteLine($"{i.Type} {i.Kv.Key.ToStrUtf8()}");
+            //    }
+            //    c++;
+
+            //    if (c > 5)
+            //    {
+            //        await watcher.CancelAsync();
+            //        break;
+            //    }
+            //}
+
             //Console.WriteLine("Begin!");
             //var test = new KVTest(new ClientFixture());
             //test.Put();
