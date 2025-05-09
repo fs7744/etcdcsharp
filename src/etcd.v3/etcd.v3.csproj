@@ -6,12 +6,13 @@
     <Description>etcd chsarp generate by grpc tools</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright>copyright @2017 Victor.X.Qu</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/fs7744/etcdcsharp/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/fs7744/etcdcsharp</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>Victor.x.qu</Authors>
     <RootNamespace>Etcd</RootNamespace>
 	  <IncludeGoogleApiCommonProtos>True</IncludeGoogleApiCommonProtos>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,4 +37,7 @@
 		<Protobuf Include="proto\gogoproto\gogo.proto" GrpcServices="Client" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Include="../../README.md" Pack="true" PackagePath="/" />
+	</ItemGroup>
 </Project>

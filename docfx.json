@@ -4,14 +4,13 @@
       "src": [
         {
           "files": [
-            "**/**.cs"
+            "**/bin/Release/**.dll"
           ],
           "exclude": [
             "**/obj/**",
-            "**/bin/**",
             "_site/**",
-            "ETCD.V3.Test/**",
-            "Test/**"
+            "Test/**",
+            "Test/bin/**.dll"
           ],
           "cwd": "src"
         }

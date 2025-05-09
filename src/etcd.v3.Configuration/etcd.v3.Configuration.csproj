@@ -6,11 +6,12 @@
 	  <Description>etcd chsarp generate by grpc tools</Description>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <Copyright>copyright @2017 Victor.X.Qu</Copyright>
-	  <PackageLicenseUrl>https://raw.githubusercontent.com/fs7744/etcdcsharp/master/LICENSE</PackageLicenseUrl>
 	  <PackageProjectUrl>https://github.com/fs7744/etcdcsharp</PackageProjectUrl>
 	  <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	  <Authors>Victor.x.qu</Authors>
 	  <RootNamespace>Etcd.Configuration</RootNamespace>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -21,5 +22,8 @@
 	  <ProjectReference Include="..\etcd.v3\etcd.v3.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Include="../../README.md" Pack="true" PackagePath="/" />
+	</ItemGroup>
 
 </Project>

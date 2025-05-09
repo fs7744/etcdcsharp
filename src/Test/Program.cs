@@ -3,6 +3,9 @@ using Etcd;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using System.Linq;
+using Etcdserverpb;
+using Google.Protobuf;
 
 namespace Test
 {
@@ -10,22 +13,30 @@ namespace Test
     {
         private static async Task Main(string[] args)
         {
-            var b = new ConfigurationBuilder();
-            b.UseEtcd(new Etcd.Configuration.EtcdConfigurationOptions()
-            {
-                Prefix = "/ReverseProxy/",
-                RemovePrefix = true,
-                EtcdClientOptions = new EtcdClientOptions() { Address = ["http://172.16.171.56:8068"] }
-            });
-            var c = b.Build();
-            Test(c);
+            //var b = new ConfigurationBuilder();
+            //b.UseEtcd(new Etcd.Configuration.EtcdConfigurationOptions()
+            //{
+            //    Prefix = "/ReverseProxy/",
+            //    RemovePrefix = true,
+            //    EtcdClientOptions = new EtcdClientOptions() { Address = ["http://172.16.171.56:8068"] }
+            //});
+            //var c = b.Build();
+            //Test(c);
 
-            //ServiceCollection services = new();
-            //services.UseEtcdClient();
-            //services.AddEtcdClient("test", new EtcdClientOptions() { Address = ["http://172.16.171.56:8068"] });
-            //var p = services.BuildServiceProvider();
-            ////var factory = p.GetRequiredService<IEtcdClientFactory>();
-            //var client = p.GetRequiredKeyedService<IEtcdClient>("test");
+            ServiceCollection services = new();
+            services.UseEtcdClient();
+            services.AddEtcdClient("test", new EtcdClientOptions() { Address = ["http://172.16.171.56:8068"] });
+            var p = services.BuildServiceProvider();
+            //var factory = p.GetRequiredService<IEtcdClientFactory>();
+            var client = p.GetRequiredKeyedService<IEtcdClient>("test");
+
+            string v = (await client.RangeAsync(new RangeRequest() { Key = ByteString.CopyFromUtf8("/ReverseProxy/") })).Kvs?.First().Value.ToStrUtf8();
+
+            foreach (var i in await client.GetRangeValueUtf8Async("/ReverseProxy/"))
+            {
+                Console.WriteLine($"{i.Key} : {i.Value}");
+            }
+
             //var factory = EtcdClientFactory.Create();
             //var client = factory.CreateClient(new EtcdClientOptions() { Address = ["http://172.16.171.56:8068"] });
             //foreach (var item in (await client.MemberListAsync(new Etcdserverpb.MemberListRequest() { Linearizable = false })).Members)
