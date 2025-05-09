@@ -2,6 +2,7 @@
 using Etcd;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace Test
 {
@@ -9,12 +10,22 @@ namespace Test
     {
         private static async Task Main(string[] args)
         {
-            ServiceCollection services = new();
-            services.UseEtcdClient();
-            services.AddEtcdClient("test", new EtcdClientOptions() { Address = ["http://172.16.171.56:8068"] });
-            var p = services.BuildServiceProvider();
-            //var factory = p.GetRequiredService<IEtcdClientFactory>();
-            var client = p.GetRequiredKeyedService<IEtcdClient>("test");
+            var b = new ConfigurationBuilder();
+            b.UseEtcd(new Etcd.Configuration.EtcdConfigurationOptions()
+            {
+                Prefix = "/ReverseProxy/",
+                RemovePrefix = true,
+                EtcdClientOptions = new EtcdClientOptions() { Address = ["http://172.16.171.56:8068"] }
+            });
+            var c = b.Build();
+            Test(c);
+
+            //ServiceCollection services = new();
+            //services.UseEtcdClient();
+            //services.AddEtcdClient("test", new EtcdClientOptions() { Address = ["http://172.16.171.56:8068"] });
+            //var p = services.BuildServiceProvider();
+            ////var factory = p.GetRequiredService<IEtcdClientFactory>();
+            //var client = p.GetRequiredKeyedService<IEtcdClient>("test");
             //var factory = EtcdClientFactory.Create();
             //var client = factory.CreateClient(new EtcdClientOptions() { Address = ["http://172.16.171.56:8068"] });
             //foreach (var item in (await client.MemberListAsync(new Etcdserverpb.MemberListRequest() { Linearizable = false })).Members)
@@ -62,6 +73,18 @@ namespace Test
             //        break;
             //    }
             //}
+        }
+
+        private static void Test(IConfigurationRoot c)
+        {
+            foreach (var i in c.GetChildren())
+            {
+                Console.WriteLine($"{i.Key} : {i.Value}");
+            }
+            c.GetReloadToken().RegisterChangeCallback(i =>
+            {
+                Test(i as IConfigurationRoot);
+            }, c);
         }
     }
 }

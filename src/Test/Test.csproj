@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\etcd.v3.Configuration\etcd.v3.Configuration.csproj" />
     <ProjectReference Include="..\etcd.v3\etcd.v3.csproj" />
   </ItemGroup>
 
