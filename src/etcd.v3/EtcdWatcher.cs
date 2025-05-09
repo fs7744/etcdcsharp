@@ -48,13 +48,4 @@ public class EtcdWatcher : IDisposable
             await CancelAsync(cancellationToken);
         }
     }
-
-    public void ForAll(Action<WatchResponse> action)
-    {
-        ForAllAsync(i =>
-        {
-            action(i);
-            return Task.CompletedTask;
-        }, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
-    }
 }

@@ -2,14 +2,13 @@
 
   <PropertyGroup>
 	 <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-    <Version>0.0.1.4-pre</Version>
+    <Version>0.0.2</Version>
     <Description>etcd chsarp generate by grpc tools</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright>copyright @2017 Victor.X.Qu</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/fs7744/etcdcsharp/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/fs7744/etcdcsharp</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>change etcd v3 auth to use AuthCallInvoker</PackageReleaseNotes>
     <Authors>Victor.x.qu</Authors>
     <RootNamespace>Etcd</RootNamespace>
 	  <IncludeGoogleApiCommonProtos>True</IncludeGoogleApiCommonProtos>

@@ -9,6 +9,8 @@ namespace Etcd;
 
 public partial interface IEtcdClient
 {
+    public Watch.WatchClient WatchClient { get; }
+
     Task<EtcdWatcher> WatchAsync(WatchRequest request, Metadata headers = null, DateTime? deadline = null,
         CancellationToken cancellationToken = default);
 
@@ -21,23 +23,20 @@ public partial interface IEtcdClient
     Task WatchRangeBackendAsync(string path, Func<WatchResponse, Task> func, Metadata headers = null, DateTime? deadline = null, long startRevision = 0,
         bool noPut = false, bool noDelete = false, Action<Exception> ex = null, bool reWatchWhenException = false, CancellationToken cancellationToken = default);
 
-    void WatchRangeBackend(string path, Action<WatchResponse> action, Metadata headers = null, DateTime? deadline = null, long startRevision = 0, bool noPut = false,
-        bool noDelete = false, Action<Exception> ex = null, bool reWatchWhenException = false);
-
     Task WatchBackendAsync(string key, Func<WatchResponse, Task> func, Metadata headers = null, DateTime? deadline = null, long startRevision = 0,
         bool noPut = false, bool noDelete = false, Action<Exception> ex = null, bool reWatchWhenException = false, CancellationToken cancellationToken = default);
-
-    void WatchBackend(string key, Action<WatchResponse> action, Metadata headers = null, DateTime? deadline = null, long startRevision = 0, bool noPut = false,
-        bool noDelete = false, Action<Exception> ex = null, bool reWatchWhenException = false);
 }
 
 public partial class EtcdClient : IEtcdClient
 {
+    private Watch.WatchClient watchClient;
+    public Watch.WatchClient WatchClient => watchClient ??= new Watch.WatchClient(callInvoker);
+
     public async Task<EtcdWatcher> WatchAsync(WatchRequest request, Metadata headers = null, DateTime? deadline = null,
         CancellationToken cancellationToken = default)
     {
         var stream = WatchClient.Watch(headers, deadline, cancellationToken);
-        await stream.RequestStream.WriteAsync(new WatchRequest() { CreateRequest = request.CreateRequest }, cancellationToken);
+        await stream.RequestStream.WriteAsync(new WatchRequest() { CreateRequest = request.CreateRequest }, cancellationToken).ConfigureAwait(false);
         return new EtcdWatcher(stream);
     }
 
@@ -55,14 +54,14 @@ public partial class EtcdClient : IEtcdClient
         return WatchAsync(CreateWatchReq(key, startRevision, noPut, noDelete), headers, deadline, cancellationToken);
     }
 
-    public async Task WatchRangeBackendAsync(string path, Func<WatchResponse, Task> func, Metadata headers = null, DateTime? deadline = null, long startRevision = 0,
+    public Task WatchRangeBackendAsync(string path, Func<WatchResponse, Task> func, Metadata headers = null, DateTime? deadline = null, long startRevision = 0,
         bool noPut = false, bool noDelete = false, Action<Exception> ex = null, bool reWatchWhenException = false, CancellationToken cancellationToken = default)
     {
-        var watcher = await WatchRangeAsync(path, headers, deadline, startRevision, noPut, noDelete, cancellationToken);
-        Task.Factory.StartNew(async () =>
+        return Task.Factory.StartNew(async () =>
         {
             try
             {
+                var watcher = await WatchRangeAsync(path, headers, deadline, startRevision, noPut, noDelete, cancellationToken);
                 await watcher.ForAllAsync(reWatchWhenException
                     ? i =>
                 {
@@ -76,45 +75,18 @@ public partial class EtcdClient : IEtcdClient
                 ex?.Invoke(e);
                 if (reWatchWhenException)
                 {
-                    await WatchRangeBackendAsync(path, func, headers, deadline, startRevision, noPut, noDelete, ex, reWatchWhenException, CancellationToken.None);
+                    WatchRangeBackendAsync(path, func, headers, deadline, startRevision, noPut, noDelete, ex, reWatchWhenException, CancellationToken.None);
                 }
             }
         });
     }
 
-    public void WatchRangeBackend(string path, Action<WatchResponse> action, Metadata headers = null, DateTime? deadline = null, long startRevision = 0, bool noPut = false,
-        bool noDelete = false, Action<Exception> ex = null, bool reWatchWhenException = false)
-    {
-        var watcher = WatchRangeAsync(path, headers, deadline, startRevision, noPut, noDelete, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
-        Task.Factory.StartNew(() =>
-        {
-            try
-            {
-                watcher.ForAll(reWatchWhenException
-                    ? i =>
-                    {
-                        startRevision = FindRevision(startRevision, i);
-                        action(i);
-                    }
-                : action);
-            }
-            catch (Exception e)
-            {
-                ex?.Invoke(e);
-                if (reWatchWhenException)
-                {
-                    WatchRangeBackend(path, action, headers, deadline, startRevision, noPut, noDelete, ex, reWatchWhenException);
-                }
-            }
-        });
-    }
-
-    public async Task WatchBackendAsync(string key, Func<WatchResponse, Task> func, Metadata headers = null, DateTime? deadline = null, long startRevision = 0,
+    public Task WatchBackendAsync(string key, Func<WatchResponse, Task> func, Metadata headers = null, DateTime? deadline = null, long startRevision = 0,
         bool noPut = false, bool noDelete = false, Action<Exception> ex = null, bool reWatchWhenException = false, CancellationToken cancellationToken = default)
     {
-        var watcher = await WatchAsync(key, headers, deadline, startRevision, noPut, noDelete, cancellationToken);
-        Task.Factory.StartNew(async () =>
+        return Task.Factory.StartNew(async () =>
         {
+            var watcher = await WatchAsync(key, headers, deadline, startRevision, noPut, noDelete, cancellationToken);
             try
             {
                 await watcher.ForAllAsync(reWatchWhenException
@@ -130,34 +102,7 @@ public partial class EtcdClient : IEtcdClient
                 ex?.Invoke(e);
                 if (reWatchWhenException)
                 {
-                    await WatchBackendAsync(key, func, headers, deadline, startRevision, noPut, noDelete, ex, reWatchWhenException, CancellationToken.None);
-                }
-            }
-        });
-    }
-
-    public void WatchBackend(string key, Action<WatchResponse> action, Metadata headers = null, DateTime? deadline = null, long startRevision = 0, bool noPut = false,
-        bool noDelete = false, Action<Exception> ex = null, bool reWatchWhenException = false)
-    {
-        var watcher = WatchAsync(key, headers, deadline, startRevision, noPut, noDelete, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
-        Task.Factory.StartNew(() =>
-        {
-            try
-            {
-                watcher.ForAll(reWatchWhenException
-                    ? i =>
-                    {
-                        startRevision = FindRevision(startRevision, i);
-                        action(i);
-                    }
-                : action);
-            }
-            catch (Exception e)
-            {
-                ex?.Invoke(e);
-                if (reWatchWhenException)
-                {
-                    WatchBackend(key, action, headers, deadline, startRevision, noPut, noDelete, ex, reWatchWhenException);
+                    WatchBackendAsync(key, func, headers, deadline, startRevision, noPut, noDelete, ex, reWatchWhenException, CancellationToken.None);
                 }
             }
         });

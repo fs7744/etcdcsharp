@@ -43,10 +43,10 @@ public partial class EtcdClientFactory : IEtcdClientFactory
         this.resolverFactory = resolverFactory;
     }
 
-    public static IEtcdClientFactory Create()
+    public static IEtcdClientFactory Create(TimeSpan? dnsRefreshInterval = null)
     {
         ServiceCollection services = new();
-        services.AddEtcdClient();
+        services.UseEtcdClient(dnsRefreshInterval);
         var p = services.BuildServiceProvider();
         return p.GetRequiredService<IEtcdClientFactory>();
     }
@@ -87,4 +87,11 @@ public partial class EtcdClientFactory : IEtcdClientFactory
 
         return new EtcdClient(channel, callInvoker);
     }
+}
+
+public record class EtcdClientCache
+{
+    internal string key;
+    internal EtcdClientOptions options;
+    internal IEtcdClient client;
 }

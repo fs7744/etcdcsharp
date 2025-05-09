@@ -1,11 +1,6 @@
-﻿using Etcdserverpb;
-using Grpc.Core;
+﻿using Grpc.Core;
 using Grpc.Net.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Etcd;
 
@@ -18,9 +13,6 @@ public partial class EtcdClient : IEtcdClient
     private const string rangeEndString = "\x00";
     private GrpcChannel channel;
     private CallInvoker callInvoker;
-
-    private Watch.WatchClient watchClient;
-    internal Watch.WatchClient WatchClient => watchClient ??= new Watch.WatchClient(callInvoker);
 
     public EtcdClient(GrpcChannel channel, CallInvoker callInvoker)
     {
