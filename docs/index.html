@@ -86,17 +86,177 @@ Install-Package etcd.v3.Configuration -Version 0.0.2
 <pre><code>dotnet add package etcd.v3 --version 0.0.2
 dotnet add package etcd.v3.Configuration --version 0.0.2
 </code></pre>
-<h3 id="simple-use-example">Simple use example</h3>
-<h4 id="di">DI</h4>
+<h3 id="new-client">new client</h3>
+<h4 id="new-client-with-di">new client with DI</h4>
 <pre><code class="lang-csharp"> ServiceCollection services = new();
  services.UseEtcdClient();
  services.AddEtcdClient(&quot;test&quot;, new EtcdClientOptions() { Address = [&quot;http://xxx:2379&quot;] });
  var p = services.BuildServiceProvider();
+
  var client = p.GetRequiredKeyedService&lt;IEtcdClient&gt;(&quot;test&quot;);
+
+ // you also can create client by factory
+ var factory = p.GetRequiredService&lt;IEtcdClientFactory&gt;();
+var client2 = factory.CreateClient(new EtcdClientOptions() { Address = [&quot;http://xxx:2379&quot;] });
+
+
+// get all config
+foreach (var i in await client.GetRangeValueUtf8Async(&quot;/ReverseProxy/&quot;))
+{
+   Console.WriteLine($&quot;{i.Key} : {i.Value}&quot;);
+}
+
+// OR get client in ctor
+public class Testt
+{
+    private readonly IEtcdClient client;
+
+    public Testt([FromKeyedServices(&quot;test&quot;)] IEtcdClient client)
+    {
+        this.client = client;
+    }
+}
+
+
+</code></pre>
+<h4 id="new-client-without-di">new client without DI</h4>
+<pre><code class="lang-csharp"> var factory = EtcdClientFactory.Create();
+var client = factory.CreateClient(new EtcdClientOptions() { Address = [&quot;http://xxx:2379&quot;] });
+
+// get all config
+foreach (var i in await client.GetRangeValueUtf8Async(&quot;/ReverseProxy/&quot;))
+{
+   Console.WriteLine($&quot;{i.Key} : {i.Value}&quot;);
+}
+</code></pre>
+<h4 id="use-with-configuration">use with Configuration</h4>
+<pre><code class="lang-csharp">var b = new ConfigurationBuilder();
+b.UseEtcd(new Etcd.Configuration.EtcdConfigurationOptions()
+{
+    Prefix = &quot;/ReverseProxy/&quot;,
+    RemovePrefix = true,
+    EtcdClientOptions = new EtcdClientOptions() { Address = [&quot;http://xxx:2379&quot;] }
+});
+var c = b.Build();
+
+// test watch change
+Test(c);
+
+private static void Test(IConfigurationRoot c)
+{
+    foreach (var i in c.GetChildren())
+    {
+        Console.WriteLine($&quot;{i.Key} : {i.Value}&quot;);
+    }
+    c.GetReloadToken().RegisterChangeCallback(i =&gt;
+    {
+        Test(i as IConfigurationRoot);
+    }, c);
+}
+</code></pre>
+<h4 id="address">Address</h4>
+<p>Address just parse by <code>GrpcChannel.ForAddress</code>, so support</p>
+<ul>
+<li>http://xxx:port</li>
+<li>https://xxx:port</li>
+<li>dns://xxx:port</li>
+</ul>
+<h3 id="kv">KV</h3>
+<h4 id="get-one-by-key">get one by key</h4>
+<pre><code class="lang-csharp">string v = await client.GetValueUtf8Async(&quot;/ReverseProxy/&quot;);
+//or 
+string v = (await client.GetAsync(&quot;/ReverseProxy/&quot;)).Kvs?.First().Value.ToStrUtf8();
+//or
+string v = (await client.RangeAsync(new RangeRequest() { Key = ByteString.CopyFromUtf8(&quot;/ReverseProxy/&quot;) })).Kvs?.First().Value.ToStrUtf8();
+</code></pre>
+<h5 id="get-all-idictionarystring-string">get all IDictionary&lt;string, string&gt;</h5>
+<pre><code class="lang-csharp">foreach (var i in await client.GetRangeValueUtf8Async(&quot;/ReverseProxy/&quot;))
+{
+    Console.WriteLine($&quot;{i.Key} : {i.Value}&quot;);
+}
+//or
+foreach (var i in (await client.GetRangeAsync(&quot;/ReverseProxy/&quot;)).Kvs)
+{
+    Console.WriteLine($&quot;{i.Key.ToStrUtf8()} : {i.Value.ToStrUtf8()}&quot;);
+}
+//or
+foreach (var i in (await client.RangeAsync(new RangeRequest() { Key = ByteString.CopyFromUtf8(&quot;/ReverseProxy/&quot;), RangeEnd = ByteString.CopyFromUtf8(&quot;/ReverseProxy/&quot;.GetRangeEnd()) })).Kvs)
+{
+    Console.WriteLine($&quot;{i.Key.ToStrUtf8()} : {i.Value.ToStrUtf8()}&quot;);
+}
+</code></pre>
+<h4 id="put">Put</h4>
+<pre><code class="lang-csharp">await client.PutAsync(&quot;/ReverseProxy/test&quot;, &quot;1&quot;);
+//or
+await client.PutAsync(new PutRequest() { Key = ByteString.CopyFromUtf8(&quot;/ReverseProxy/test&quot;), Value = ByteString.CopyFromUtf8(&quot;1&quot;) });
+</code></pre>
+<h4 id="delete-one">Delete one</h4>
+<pre><code class="lang-csharp">await client.DeleteAsync(&quot;/ReverseProxy/test&quot;);
+//or
+await client.DeleteRangeAsync(new DeleteRangeRequest() { Key = ByteString.CopyFromUtf8(&quot;/ReverseProxy/test&quot;) });
+</code></pre>
+<h4 id="delete-all">Delete all</h4>
+<pre><code class="lang-csharp">await client.DeleteRangeAsync(&quot;/ReverseProxy/test&quot;);
+//or
+await client.DeleteRangeAsync(new DeleteRangeRequest() { Key = ByteString.CopyFromUtf8(&quot;/ReverseProxy/test&quot;), RangeEnd = ByteString.CopyFromUtf8(&quot;/ReverseProxy/test&quot;.GetRangeEnd())) });
+</code></pre>
+<h4 id="watch">Watch</h4>
+<pre><code class="lang-csharp"> await client.WatchRangeBackendAsync(&quot;/ReverseProxy/&quot;, i =&gt;
+ {
+     if (i.Events.Count &gt; 0)
+     {
+         foreach (var item in i.Events)
+         {
+             Console.WriteLine($&quot;{item.Type} {item.Kv.Key.ToStrUtf8()}&quot;);
+         }
+     }
+     return Task.CompletedTask;
+ }, startRevision: 6, reWatchWhenException: true);
+
+ // or
+await Task.Factory.StartNew(async () =&gt;
+{
+    long startRevision = 6;
+    while (true)
+    {
+        try
+        {
+            using var watcher = await client.WatchRangeAsync(&quot;/ReverseProxy/&quot;, startRevision: startRevision);
+            await watcher.ForAllAsync(i =&gt;
+            {
+                startRevision = i.FindRevision(startRevision);
+                foreach (var item in i.Events)
+                {
+                    Console.WriteLine($&quot;{item.Type} {item.Kv.Key.ToStrUtf8()}&quot;);
+                }
+                return Task.CompletedTask;
+            });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($&quot;Exception: {ex.Message}&quot;);
+        }
+    }
+});
+</code></pre>
+<h4 id="all-grpc-client">all grpc client</h4>
+<p>if IEtcdClient Missing some grpc method , you can just use grpc client to do</p>
+<pre><code class="lang-csharp">public partial interface IEtcdClient
+{
+    public AuthClient AuthClient { get; }
+    public Cluster.ClusterClient ClusterClient { get; }
+    public ElectionClient ElectionClient { get; }
+    public KV.KVClient KVClient { get; }
+    public LeaseClient LeaseClient { get; }
+    public LockClient LockClient { get; }
+    public MaintenanceClient MaintenanceClient { get; }
+    public Watch.WatchClient WatchClient { get; }
+}
 </code></pre>
 <h3 id="api-doc">api doc</h3>
 <p>Main api doc please see</p>
-<p><a href="https://fs7744.github.io/etcdcsharp/api/ETCD.V3.html">https://fs7744.github.io/etcdcsharp/api/ETCD.V3.html</a></p>
+<p><a href="https://fs7744.github.io/etcdcsharp/api/Etcd.html">https://fs7744.github.io/etcdcsharp/api/Etcd.html</a>
+<a href="https://fs7744.github.io/etcdcsharp/api/Microsoft.Extensions.Configuration.EtcdConfigurationExtensions.html">https://fs7744.github.io/etcdcsharp/api/Microsoft.Extensions.Configuration.EtcdConfigurationExtensions.html</a></p>
 <p>All api doc ( include code generate by grpc tool ) please see</p>
 <p><a href="https://fs7744.github.io/etcdcsharp/api/index.html">https://fs7744.github.io/etcdcsharp/api/index.html</a></p>
 

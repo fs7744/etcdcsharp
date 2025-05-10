@@ -44,7 +44,7 @@ public partial class EtcdClient : IEtcdClient
         CancellationToken cancellationToken = default)
     {
         var req = CreateWatchReq(path, startRevision, noPut, noDelete);
-        req.CreateRequest.RangeEnd = ByteString.CopyFromUtf8(GetRangeEnd(path));
+        req.CreateRequest.RangeEnd = ByteString.CopyFromUtf8(path.GetRangeEnd());
         return WatchAsync(req, headers, deadline, cancellationToken);
     }
 
@@ -65,7 +65,7 @@ public partial class EtcdClient : IEtcdClient
                 await watcher.ForAllAsync(reWatchWhenException
                     ? i =>
                 {
-                    startRevision = FindRevision(startRevision, i);
+                    startRevision = i.FindRevision(startRevision);
                     return func(i);
                 }
                 : func, CancellationToken.None);
@@ -92,7 +92,7 @@ public partial class EtcdClient : IEtcdClient
                 await watcher.ForAllAsync(reWatchWhenException
                     ? i =>
                     {
-                        startRevision = FindRevision(startRevision, i);
+                        startRevision = i.FindRevision(startRevision);
                         return func(i);
                     }
                 : func, CancellationToken.None);
@@ -130,20 +130,5 @@ public partial class EtcdClient : IEtcdClient
         {
             CreateRequest = req
         };
-    }
-
-    private static long FindRevision(long startRevision, WatchResponse i)
-    {
-        if (i.CompactRevision >= startRevision)
-        {
-            startRevision = i.CompactRevision + 1;
-        }
-
-        if (i.Header.Revision >= startRevision)
-        {
-            startRevision = i.Header.Revision + 1;
-        }
-
-        return startRevision;
     }
 }

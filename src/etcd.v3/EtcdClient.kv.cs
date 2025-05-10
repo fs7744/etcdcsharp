@@ -114,13 +114,13 @@ public partial class EtcdClient : IEtcdClient
 
     public RangeResponse GetRange(string prefix, Metadata headers = null, DateTime? deadline = null)
     {
-        return Range(new RangeRequest() { Key = ByteString.CopyFromUtf8(prefix), RangeEnd = ByteString.CopyFromUtf8(GetRangeEnd(prefix)) }, headers, deadline);
+        return Range(new RangeRequest() { Key = ByteString.CopyFromUtf8(prefix), RangeEnd = ByteString.CopyFromUtf8(prefix.GetRangeEnd()) }, headers, deadline);
     }
 
     public Task<RangeResponse> GetRangeAsync(string prefix, Metadata headers = null, DateTime? deadline = null,
         CancellationToken cancellationToken = default)
     {
-        return RangeAsync(new RangeRequest() { Key = ByteString.CopyFromUtf8(prefix), RangeEnd = ByteString.CopyFromUtf8(GetRangeEnd(prefix)) }, headers, deadline, cancellationToken);
+        return RangeAsync(new RangeRequest() { Key = ByteString.CopyFromUtf8(prefix), RangeEnd = ByteString.CopyFromUtf8(prefix.GetRangeEnd()) }, headers, deadline, cancellationToken);
     }
 
     public IDictionary<string, string> GetRangeValueUtf8(string prefix, Metadata headers = null, DateTime? deadline = null)
@@ -180,13 +180,13 @@ public partial class EtcdClient : IEtcdClient
 
     public DeleteRangeResponse DeleteRange(string prefix, Metadata headers = null, DateTime? deadline = null)
     {
-        return DeleteRange(new DeleteRangeRequest() { Key = ByteString.CopyFromUtf8(prefix), RangeEnd = ByteString.CopyFromUtf8(GetRangeEnd(prefix)) }, headers, deadline);
+        return DeleteRange(new DeleteRangeRequest() { Key = ByteString.CopyFromUtf8(prefix), RangeEnd = ByteString.CopyFromUtf8(prefix.GetRangeEnd()) }, headers, deadline);
     }
 
     public Task<DeleteRangeResponse> DeleteRangeAsync(string prefix, Metadata headers = null, DateTime? deadline = null,
         CancellationToken cancellationToken = default)
     {
-        return DeleteRangeAsync(new DeleteRangeRequest() { Key = ByteString.CopyFromUtf8(prefix), RangeEnd = ByteString.CopyFromUtf8(GetRangeEnd(prefix)) }, headers, deadline, cancellationToken);
+        return DeleteRangeAsync(new DeleteRangeRequest() { Key = ByteString.CopyFromUtf8(prefix), RangeEnd = ByteString.CopyFromUtf8(prefix.GetRangeEnd()) }, headers, deadline, cancellationToken);
     }
 
     public TxnResponse Transaction(TxnRequest request, Metadata headers = null, DateTime? deadline = null)

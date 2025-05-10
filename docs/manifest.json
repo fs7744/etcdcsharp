@@ -224,6 +224,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Etcd.EtcdExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Etcd.EtcdExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Etcd.EtcdExtensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Etcd.EtcdWatcher.yml",
       "output": {
         ".html": {
@@ -10972,6 +10986,34 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Mvccpb",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Test.Testt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Test.Testt.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Test.Testt",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Test.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Test.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Test",
       "Summary": null
     },
     {
